@@ -92,11 +92,14 @@ jobs:
             npm run enrich:comicvine
           fi
 
-      - name: Propagate enriched metadata across duplicate issue entries
-        # Always runs — cheap post-processing; fills fields that the per-entry
-        # enrichers might have populated for one copy of an issue but not the
-        # other (same marvelId across different guides).
-        run: npm run enrich:dedup
+      - name: Drop pseudo-issues (scraper leaks — "Collects:", "Read X…")
+        run: npm run cleanup:pseudo
+
+      - name: Normalise catalog (dedup + restructure)
+        # Emits events.json in the `{ catalog, events }` shape. Supersedes
+        # the prior dedup-enrichment step: normalisation is deduplication
+        # by construction.
+        run: npm run normalize:catalog
 
       - name: Commit + push updates
         working-directory: .

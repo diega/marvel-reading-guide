@@ -21,16 +21,9 @@
  * stderr summary of what was dropped.
  */
 
-import { readFileSync, writeFileSync } from 'node:fs';
-import { resolve, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const EVENTS_PATH = resolve(__dirname, '../pwa/src/data/events.json');
+import { loadEvents, writeEvents, type EventsFile } from './lib-events.js';
 
 type Issue = Record<string, unknown> & { title?: string; year?: number };
-type Event = { id: string; name: string; issues?: Issue[] };
-type EventsFile = { generatedAt?: string; events: Event[] };
 
 // Titles that aren't real issues. Kept specific — we'd rather leave a
 // genuine issue in than drop something real.
@@ -50,8 +43,7 @@ function isPseudoIssue(issue: Issue): boolean {
   return GARBAGE_PATTERNS.some((p) => p.test(title));
 }
 
-const raw = readFileSync(EVENTS_PATH, 'utf8');
-const data: EventsFile = JSON.parse(raw);
+const data: EventsFile = loadEvents();
 
 let droppedCount = 0;
 const droppedByTitle = new Map<string, number>();
@@ -77,7 +69,7 @@ for (const event of data.events) {
   }
 }
 
-writeFileSync(EVENTS_PATH, JSON.stringify(data, null, 2) + '\n');
+writeEvents(data);
 
 console.log(
   `\ncleanup-pseudo-issues: dropped ${droppedCount} pseudo-issue(s) across ` +

@@ -19,7 +19,8 @@
  *   npm run enrich:sitemap:fast      # only step 1 (no network to marvel.com/bifrost)
  */
 
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
+import { loadEvents, writeEvents } from './lib-events.js';
 import type { Event, EventsFile, Issue } from '../pwa/src/lib/schema';
 import { deriveEventCovers, deriveTeamCovers } from './lib-covers';
 
@@ -332,7 +333,8 @@ function applyOverrides(file: EventsFile, overrides: Map<string, OverrideEntry>)
 async function main() {
   const index = await buildIndex();
   const overrides = await loadOverrides();
-  const file: EventsFile = JSON.parse(await readFile(EVENTS_PATH, 'utf8'));
+  // Reads flat format; hydrates from catalog if on-disk is normalised.
+  const file = loadEvents() as unknown as EventsFile;
 
   let matched = 0;
   let total = 0;
@@ -358,9 +360,10 @@ async function main() {
   let bf = { drns: 0, covers: 0 };
 
   // Autosave after each batch of digitalIds so Ctrl-C never wipes progress.
+  // Writes flat — normalisation is a separate pipeline step.
   const save = async () => {
     file.generatedAt = new Date().toISOString();
-    await writeFile(EVENTS_PATH, JSON.stringify(file, null, 2));
+    writeEvents(file);
     process.stdout.write(' 💾');
   };
 
@@ -390,8 +393,8 @@ async function main() {
   console.log(`\n  coverage: slug=${withSlug}/${total}  digitalId=${withDid}/${total}  drn=${withDrn}/${total}  cover=${withCover}/${total}`);
 
   file.generatedAt = new Date().toISOString();
-  await writeFile(EVENTS_PATH, JSON.stringify(file, null, 2));
-  console.log(`\nWrote ${EVENTS_PATH.pathname}`);
+  writeEvents(file);
+  console.log(`\nWrote events.json`);
 }
 
 function lookup(index: Map<string, SitemapEntry[]>, issue: Issue): SitemapEntry | null {

@@ -5,7 +5,7 @@
 // API key lives in env CV_API_KEY (never commit). Usage:
 //   CV_API_KEY=xxx npx tsx enrich-from-comicvine.ts
 
-import { readFile, writeFile } from 'node:fs/promises';
+import { loadEvents, writeEvents } from './lib-events.js';
 import type { EventsFile, Issue } from '../pwa/src/lib/schema';
 
 const CV_API_KEY = process.env.CV_API_KEY;
@@ -134,7 +134,7 @@ async function fetchVolumeIssues(volumeId: number): Promise<CvIssue[]> {
 }
 
 async function main() {
-  const file: EventsFile = JSON.parse(await readFile(EVENTS_PATH, 'utf8'));
+  const file = loadEvents() as unknown as EventsFile;
   const groups = groupUnmatched(file);
   const titles = [...groups.keys()].sort((a, b) => groups.get(b)!.length - groups.get(a)!.length);
 
@@ -143,7 +143,7 @@ async function main() {
   let saved = 0;
   const save = async () => {
     file.generatedAt = new Date().toISOString();
-    await writeFile(EVENTS_PATH, JSON.stringify(file, null, 2));
+    writeEvents(file);
     process.stdout.write(' 💾');
   };
 

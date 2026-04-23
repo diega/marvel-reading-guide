@@ -11,10 +11,11 @@
     "enrich:sitemap": "tsx enrich-from-sitemap.ts",
     "enrich:sitemap:fast": "tsx enrich-from-sitemap.ts --only-sitemap",
     "enrich:comicvine": "tsx enrich-from-comicvine.ts",
-    "enrich:dedup": "tsx dedup-enrichment.ts",
+    "cleanup:pseudo": "tsx cleanup-pseudo-issues.ts",
+    "normalize:catalog": "tsx normalize-catalog.ts",
     "cache:snapshot": "tsx lib-enrichment-cache.ts snapshot",
     "cache:restore": "tsx lib-enrichment-cache.ts restore",
-    "pipeline": "npm run scrape:cbh && npm run scrape:wikipedia && npm run merge:manual && npm run gen:runs && npm run enrich:sitemap && npm run enrich:dedup",
+    "pipeline": "npm run scrape:cbh && npm run scrape:wikipedia && npm run merge:manual && npm run gen:runs && npm run enrich:sitemap && npm run cleanup:pseudo && npm run normalize:catalog",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
