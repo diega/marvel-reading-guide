@@ -57,20 +57,58 @@ export interface AuthProvider {
 // ---------------------------------------------------------------------------
 
 /**
+ * Per-issue remote sync status. Surfaced by `useSyncStates()` so the UI can
+ * render a cloud icon per issue with feedback about whether the local state
+ * has been pushed to the remote.
+ *
+ * - `synced`      local and remote agree — nothing to push
+ * - `not-synced`  local differs from remote, user hasn't asked to push yet
+ * - `syncing`     push in flight
+ * - `failed`      last push attempt threw — button becomes a retry
+ *
+ * An adapter that doesn't do remote sync (like the default local-only one)
+ * returns an empty map from `useSyncStates()` — the UI then doesn't render
+ * any cloud affordance.
+ */
+export type IssueSyncState = 'synced' | 'not-synced' | 'syncing' | 'failed';
+
+/**
  * Reading-progress adapter.
  *
  * The default implementation persists marks in the browser's IndexedDB via
  * Dexie. Data never leaves the device. An override can wrap the defaults to
  * add remote sync (e.g. writing through to a backend while still serving
  * reads from the local store).
+ *
+ * Remote sync in this contract is **opt-in per issue, never in bulk**: the UI
+ * renders a cloud button per issue (when `useSyncStates()` has an entry for
+ * it), and only a direct user tap triggers `pushSync(issue)`. This protects
+ * users against mass mutations on an upstream API that might look like
+ * scripted abuse.
  */
 export interface ProgressAdapter {
   /** Live set of issue IDs marked as read. Must re-render on change. */
   useReadSet(): ReadonlySet<string>;
-  /** Persist `issueId` as read. */
+  /** Persist `issueId` as read (local only — does not push to any remote). */
   markRead(issueId: string): Promise<void>;
-  /** Remove the read mark for `issueId`. */
+  /** Remove the local read mark for `issueId` (local only). */
   markUnread(issueId: string): Promise<void>;
+  /**
+   * Live map of `issueId → IssueSyncState` for adapters that sync with a
+   * remote. Returning an empty map (the default) suppresses all cloud UI.
+   *
+   * Only include entries for issues that *could* be synced — e.g. skip
+   * issues that lack the identifier the remote needs (no DRN ⇒ no entry).
+   */
+  useSyncStates(): ReadonlyMap<string, IssueSyncState>;
+  /**
+   * Push this one issue's local state to the remote. Called by a
+   * user-initiated tap on the per-issue cloud button. Safe to call
+   * concurrently for different issues. Throws on failure — the caller
+   * moves the issue's sync state to `failed` and surfaces a retry
+   * affordance. The default implementation is a no-op.
+   */
+  pushSync(issue: Issue): Promise<void>;
 }
 
 // ---------------------------------------------------------------------------

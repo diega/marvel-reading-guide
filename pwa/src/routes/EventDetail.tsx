@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { getEventBySlug } from '../lib/data';
 import { sizedCover } from '../lib/deeplink';
 import { useExtensions } from '../lib/extensions-context';
@@ -8,6 +8,7 @@ import { LEVELS, LEVEL_META, countsByLevel, issuesAtLevel } from '../lib/levels'
 import { useT } from '../lib/i18n';
 import { crossRefsFor } from '../lib/crossref';
 import { GuideDetail } from './GuideDetail';
+import type { IssueSyncState } from '../lib/extensions';
 import type { Role } from '../lib/schema';
 
 export function EventDetail() {
@@ -31,6 +32,7 @@ export function EventDetail() {
   };
 
   const readSet = progress.useReadSet();
+  const syncStates = progress.useSyncStates();
 
   const counts = useMemo(() => (ev ? countsByLevel(ev.issues) : { alpha: 0, epsilon: 0, omega: 0 }), [ev]);
   const visible = useMemo(() => (ev ? issuesAtLevel(ev.issues, level) : []), [ev, level]);
@@ -122,6 +124,7 @@ export function EventDetail() {
               const href = deeplink.webHref(issue);
               const thumb = sizedCover(issue.cover, 200);
               const refs = crossRefsFor(issue, ev.id);
+              const syncState = syncStates.get(issue.id);
               return (
                 <li key={issue.id} className={`issue${isRead ? ' read' : ''}`}>
                   <div
@@ -157,20 +160,116 @@ export function EventDetail() {
                       </div>
                     )}
                   </div>
-                  <a
-                    href={href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      deeplink.open(issue);
-                    }}
-                    className="btn small primary"
-                  >
-                    {t('issue.read')}
-                  </a>
+                  <div className="issue-actions">
+                    {syncState && (
+                      <SyncButton
+                        state={syncState}
+                        onClick={() => progress.pushSync(issue)}
+                      />
+                    )}
+                    <a
+                      href={href}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        deeplink.open(issue);
+                      }}
+                      className="btn small primary"
+                    >
+                      {t('issue.read')}
+                    </a>
+                  </div>
                 </li>
               );
             })}
       </ul>
     </div>
+  );
+}
+
+/**
+ * Per-issue cloud button. Visible only when the progress adapter reports a
+ * sync state for this issue (i.e. remote sync is possible). The action is
+ * always user-initiated — never a bulk push.
+ */
+function SyncButton({
+  state,
+  onClick,
+}: {
+  state: IssueSyncState;
+  onClick: () => Promise<void> | void;
+}) {
+  const { t } = useT();
+  const [busy, setBusy] = useState(false);
+
+  const effectiveState: IssueSyncState = busy ? 'syncing' : state;
+
+  const label = SYNC_LABEL[effectiveState];
+  const disabled = effectiveState === 'syncing' || effectiveState === 'synced';
+
+  const handle = async () => {
+    if (disabled) return;
+    setBusy(true);
+    try {
+      await onClick();
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <button
+      type="button"
+      className={`sync-btn sync-${effectiveState}`}
+      onClick={handle}
+      disabled={disabled}
+      aria-label={t(label)}
+      title={t(label)}
+    >
+      <SyncIcon state={effectiveState} />
+    </button>
+  );
+}
+
+const SYNC_LABEL: Record<IssueSyncState, 'sync.synced' | 'sync.push' | 'sync.busy' | 'sync.retry'> = {
+  synced: 'sync.synced',
+  'not-synced': 'sync.push',
+  syncing: 'sync.busy',
+  failed: 'sync.retry',
+};
+
+function SyncIcon({ state }: { state: IssueSyncState }) {
+  if (state === 'syncing') {
+    return (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+        <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" strokeDasharray="12 40" strokeLinecap="round">
+          <animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="1s" repeatCount="indefinite" />
+        </circle>
+      </svg>
+    );
+  }
+  if (state === 'synced') {
+    // Cloud with check
+    return (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+        <path d="M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11.5-1A4 4 0 0 0 7 18z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="m9 13.5 2 2 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    );
+  }
+  if (state === 'failed') {
+    // Cloud with "!"
+    return (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+        <path d="M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11.5-1A4 4 0 0 0 7 18z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M12 10.5v3m0 2v.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    );
+  }
+  // not-synced → cloud with up arrow (call to action)
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path d="M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11.5-1A4 4 0 0 0 7 18z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12 15V9m0 0-2.5 2.5M12 9l2.5 2.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   );
 }

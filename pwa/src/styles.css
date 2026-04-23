@@ -144,6 +144,51 @@ button { font-family: inherit; }
   border-radius: var(--radius);
 }
 .issue.read { opacity: 0.55; }
+.issue-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Per-issue sync button (only rendered by overlays that report sync state). */
+.sync-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-elev-2);
+  color: var(--fg-muted);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.15s, color 0.15s, border-color 0.15s, opacity 0.15s;
+}
+.sync-btn:disabled { cursor: default; }
+.sync-btn.sync-synced {
+  color: #5ad18a;
+  border-color: rgba(90, 209, 138, 0.35);
+  background: rgba(90, 209, 138, 0.08);
+  opacity: 0.85;
+}
+.sync-btn.sync-not-synced {
+  color: #ffb66e;
+  border-color: rgba(255, 182, 110, 0.4);
+  background: rgba(255, 182, 110, 0.1);
+}
+.sync-btn.sync-not-synced:hover { background: rgba(255, 182, 110, 0.18); }
+.sync-btn.sync-syncing {
+  color: var(--fg-muted);
+  opacity: 0.8;
+}
+.sync-btn.sync-failed {
+  color: #ff6e6e;
+  border-color: rgba(255, 110, 110, 0.45);
+  background: rgba(255, 110, 110, 0.12);
+}
+.sync-btn.sync-failed:hover { background: rgba(255, 110, 110, 0.2); }
 .issue-thumb {
   width: 42px;
   height: 64px;
