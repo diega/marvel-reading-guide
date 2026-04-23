@@ -158,3 +158,18 @@ export type ResolvedExtensions = Required<{
 }> & {
   AccountExtras: ComponentType | null;
 };
+
+// ---------------------------------------------------------------------------
+// Host context (for overlays that expose a `createExtensions` factory)
+// ---------------------------------------------------------------------------
+
+/**
+ * Information the host PWA hands to an overlay at boot, so the overlay can
+ * build identifier indexes (e.g. DRN → issueId) without duplicating the
+ * dataset. Overlays that don't need this can keep exporting a static
+ * `extensions` object.
+ */
+export interface ExtensionsHostContext {
+  /** Flattened list of every issue across every event in the dataset. */
+  issues: Issue[];
+}
