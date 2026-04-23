@@ -6,7 +6,7 @@
  *   2. `digitalId` — fetched from each matched issue's page
  *      (marvel.com/comics/issue/{id}/{slug}) by regex-extracting an
  *      `applink.marvel.com/issue/N` or `digital-comic/N` embedded in the HTML.
- *      Rate-limited by IP, so runs with concurrency=2 + exponential backoff on 403.
+ *      Runs with concurrency=6 + exponential backoff + UA rotation on 403.
  *   3. `drn` + `cover` — from bifrost.marvel.com/unison/legacy?digitalId=N,
  *      Marvel's public GraphQL bridge. Bulk-safe, no rate limit observed.
  *   4. `event.cover` + `team.cover` — derived via lib-covers from the issue covers.
@@ -236,7 +236,7 @@ async function runConcurrent<T>(tasks: Array<() => Promise<T>>, concurrency: num
   return out;
 }
 
-async function enrichDigitalIds(file: EventsFile, concurrency = 2, saveCb?: () => Promise<void>): Promise<number> {
+async function enrichDigitalIds(file: EventsFile, concurrency = 6, saveCb?: () => Promise<void>): Promise<number> {
   let found = 0;
   const tasks: Array<() => Promise<void>> = [];
   for (const event of file.events) {
@@ -245,13 +245,17 @@ async function enrichDigitalIds(file: EventsFile, concurrency = 2, saveCb?: () =
       tasks.push(async () => {
         const did = await fetchDigitalId(issue.marvelId!, issue.slug!);
         if (did) { issue.digitalId = did; found++; }
-        // Polite spacing + autosave every 25 hits
-        await sleep(1500 + Math.random() * 1500);
+        // Light pacing — not because marvel.com requires it (we've only
+        // seen 403s under bursty concurrency, handled by UA-rotating
+        // backoff inside fetchDigitalId), but to avoid a microburst when
+        // many tasks resolve simultaneously. Dropped from the original
+        // 1500-3000ms that was over-cautious for a public HTML endpoint.
+        await sleep(200 + Math.random() * 300);
         if (saveCb && found > 0 && found % 25 === 0) await saveCb();
       });
     }
   }
-  console.log(`\n→ fetching digitalId for ${tasks.length} issues (concurrency=${concurrency}, slow pacing)`);
+  console.log(`\n→ fetching digitalId for ${tasks.length} issues (concurrency=${concurrency})`);
   await runConcurrent(tasks, concurrency);
   return found;
 }
