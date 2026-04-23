@@ -13,7 +13,8 @@
  * Usage: `npm run merge:manual`
  */
 
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
+import { loadEvents, writeEvents } from './lib-events.js';
 import type { Event, EventsFile, Issue } from '../pwa/src/lib/schema';
 import { deriveEventCovers, deriveTeamCovers } from './lib-covers';
 
@@ -40,9 +41,8 @@ function slugify(s: string): string {
 
 async function main() {
   const guidesPath = new URL('./manual-guides.json', import.meta.url);
-  const eventsPath = new URL('../pwa/src/data/events.json', import.meta.url);
 
-  const file: EventsFile = JSON.parse(await readFile(eventsPath, 'utf8'));
+  const file = loadEvents() as unknown as EventsFile;
   const manual: { guides: ManualGuide[] } = JSON.parse(await readFile(guidesPath, 'utf8'));
 
   const byId = new Map(file.events.map((e) => [e.id, e]));
@@ -83,8 +83,8 @@ async function main() {
   }
 
   file.generatedAt = new Date().toISOString();
-  await writeFile(eventsPath, JSON.stringify(file, null, 2));
-  console.log(`\nWrote ${eventsPath.pathname}`);
+  writeEvents(file);
+  console.log(`\nWrote events.json`);
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });

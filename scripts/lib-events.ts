@@ -15,7 +15,7 @@
  * concerns separate from enrichment logic.
  */
 
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, renameSync, writeFileSync, unlinkSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -125,10 +125,30 @@ export function loadEvents(): EventsFile {
 // ---- write --------------------------------------------------------------
 
 /**
- * Write the in-memory file back to disk in whatever shape you provide.
- * Pipeline scripts hand in the flat shape; `normalize-catalog.ts` runs
- * at the end of the pipeline to re-shape to normalised before commit.
+ * Atomic write. Serialises `file` to a sibling `.tmp` file, then renames
+ * over the canonical path. A crash mid-serialise leaves the old events.json
+ * intact; the rename on POSIX is atomic, so consumers never observe a
+ * half-written file.
+ *
+ * Type is intentionally permissive (`unknown`-ish) so callers can pass
+ * either the flat shape (scrapers, enrichers) or the normalised shape
+ * (normalize-catalog). The runtime shape is whatever the caller built;
+ * this function just round-trips through JSON.
  */
-export function writeEvents(file: EventsFile | NormalisedEventsFile): void {
-  writeFileSync(EVENTS_PATH, JSON.stringify(file, null, 2) + '\n');
+export function writeEvents(file: unknown): void {
+  const payload = JSON.stringify(file, null, 2) + '\n';
+  const tmpPath = `${EVENTS_PATH}.tmp.${process.pid}`;
+  try {
+    writeFileSync(tmpPath, payload);
+    renameSync(tmpPath, EVENTS_PATH);
+  } catch (err) {
+    // Leave the original file untouched on any failure. Clean up the
+    // partial tmp file if it exists — best-effort.
+    try {
+      unlinkSync(tmpPath);
+    } catch {
+      /* already gone */
+    }
+    throw err;
+  }
 }

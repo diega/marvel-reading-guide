@@ -14,7 +14,7 @@
  */
 
 import * as cheerio from 'cheerio';
-import { readFile, writeFile } from 'node:fs/promises';
+import { loadEvents, writeEvents } from './lib-events.js';
 import type { Event, EventsFile, Issue, Role } from '../pwa/src/lib/schema';
 
 interface WikiSource {
@@ -406,8 +406,7 @@ function inferLabel(url: string): string {
 }
 
 async function main() {
-  const eventsPath = new URL('../pwa/src/data/events.json', import.meta.url);
-  const existing: EventsFile = JSON.parse(await readFile(eventsPath, 'utf8'));
+  const existing = loadEvents() as unknown as EventsFile;
   const byId = new Map(existing.events.map((e) => [e.id, e]));
 
   for (const source of SOURCES) {
@@ -460,8 +459,8 @@ async function main() {
   }
 
   existing.generatedAt = new Date().toISOString();
-  await writeFile(eventsPath, JSON.stringify(existing, null, 2));
-  console.log(`\nWrote ${eventsPath.pathname}`);
+  writeEvents(existing);
+  console.log(`\nWrote events.json`);
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });

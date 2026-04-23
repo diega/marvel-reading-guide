@@ -7,6 +7,7 @@
 // independent of the arbitrary per-event `Issue.id`.
 
 import { readFile, writeFile } from 'node:fs/promises';
+import { loadEvents, writeEvents } from './lib-events.js';
 import type { EventsFile, Issue } from '../pwa/src/lib/schema';
 
 const CACHE_PATH = new URL('./.enrichment-cache.json', import.meta.url);
@@ -17,10 +18,10 @@ function key(issue: Pick<Issue, 'title' | 'number' | 'year'>): string {
   return `${issue.title.toLowerCase().trim()}|${issue.number}|${issue.year}`;
 }
 
-export async function snapshotEnrichment(eventsPath: URL): Promise<number> {
+export async function snapshotEnrichment(): Promise<number> {
   let file: EventsFile;
   try {
-    file = JSON.parse(await readFile(eventsPath, 'utf8'));
+    file = loadEvents() as unknown as EventsFile;
   } catch {
     return 0;
   }
@@ -48,14 +49,15 @@ export async function snapshotEnrichment(eventsPath: URL): Promise<number> {
     }
   }
 
+  // Cache file isn't the app's data source of truth — plain writeFile is fine.
   await writeFile(CACHE_PATH, JSON.stringify(existing, null, 2));
   return added;
 }
 
-export async function restoreEnrichment(eventsPath: URL): Promise<number> {
+export async function restoreEnrichment(): Promise<number> {
   let file: EventsFile;
   try {
-    file = JSON.parse(await readFile(eventsPath, 'utf8'));
+    file = loadEvents() as unknown as EventsFile;
   } catch {
     return 0;
   }
@@ -82,22 +84,21 @@ export async function restoreEnrichment(eventsPath: URL): Promise<number> {
     }
   }
 
-  await writeFile(eventsPath, JSON.stringify(file, null, 2));
+  writeEvents(file);
   return applied;
 }
 
 // CLI
-const EVENTS = new URL('../pwa/src/data/events.json', import.meta.url);
 if (import.meta.url === `file://${process.argv[1]}`) {
   const mode = process.argv[2];
   if (mode === 'snapshot') {
-    const n = await snapshotEnrichment(EVENTS);
-    console.log(`snapshot: cached/updated ${n} new issues`);
+    const n = await snapshotEnrichment();
+    console.log(`snapshot: ${n} new cache entr${n === 1 ? 'y' : 'ies'}`);
   } else if (mode === 'restore') {
-    const n = await restoreEnrichment(EVENTS);
-    console.log(`restore: re-applied enrichment to ${n} issues`);
+    const n = await restoreEnrichment();
+    console.log(`restore: applied cache to ${n} issue${n === 1 ? '' : 's'}`);
   } else {
-    console.error('usage: tsx lib-enrichment-cache.ts <snapshot|restore>');
+    console.error('usage: lib-enrichment-cache.ts snapshot|restore');
     process.exit(1);
   }
 }

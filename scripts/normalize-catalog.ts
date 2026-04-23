@@ -26,12 +26,8 @@
  * import time back into the same `Issue` shape.
  */
 
-import { readFileSync, writeFileSync } from 'node:fs';
-import { resolve, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const EVENTS_PATH = resolve(__dirname, '../pwa/src/data/events.json');
+import { readFileSync } from 'node:fs';
+import { EVENTS_PATH, writeEvents } from './lib-events.js';
 
 // ---- types (loose — script works against either shape) ---------------------
 
@@ -210,7 +206,7 @@ for (const k of Object.keys(catalog).sort((a, b) => Number(a) - Number(b))) {
 }
 output.catalog = sortedCatalog as Record<string, AnyRecord>;
 
-writeFileSync(EVENTS_PATH, JSON.stringify(output, null, 2) + '\n');
+writeEvents(output as Parameters<typeof writeEvents>[0]);
 
 const catalogSize = Object.keys(catalog).length;
 console.log(

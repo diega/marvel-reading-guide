@@ -14,7 +14,7 @@
  * Usage: `npm run gen:runs`
  */
 
-import { readFile, writeFile } from 'node:fs/promises';
+import { loadEvents, writeEvents } from './lib-events.js';
 import type { Event, EventsFile, Issue, Role } from '../pwa/src/lib/schema';
 import { deriveEventCovers } from './lib-covers';
 
@@ -174,8 +174,7 @@ function buildRunEvent(run: RunSpec): Event {
 }
 
 async function main() {
-  const eventsPath = new URL('../pwa/src/data/events.json', import.meta.url);
-  const file: EventsFile = JSON.parse(await readFile(eventsPath, 'utf8'));
+  const file = loadEvents() as unknown as EventsFile;
   const byId = new Map(file.events.map((e) => [e.id, e]));
 
   for (const run of RUNS) {
@@ -210,8 +209,8 @@ async function main() {
   if (covered > 0) console.log(`  derived ${covered} event-level cover(s) from issues`);
 
   file.generatedAt = new Date().toISOString();
-  await writeFile(eventsPath, JSON.stringify(file, null, 2));
-  console.log(`\nWrote ${eventsPath.pathname}`);
+  writeEvents(file);
+  console.log(`\nWrote events.json`);
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });

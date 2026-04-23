@@ -20,7 +20,12 @@
  */
 
 import * as cheerio from 'cheerio';
-import { writeFile } from 'node:fs/promises';
+import { writeEvents } from './lib-events.js';
+// Parsing helpers live in lib-cbh-parse.ts so they have unit tests — the
+// scraper's end-to-end behaviour depends on them, and we don't want to
+// find regressions by re-scraping live pages (which destructively
+// overwrites events.json and burns rate-limit budget).
+import { parseIssueLine } from './lib-cbh-parse.js';
 import type { Category, Event, EventsFile, Issue, Role } from '../pwa/src/lib/schema';
 
 interface CbhSource {
@@ -274,108 +279,6 @@ async function fetchHtml(url: string): Promise<string> {
   return res.text();
 }
 
-function slugify(s: string): string {
-  return s
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-}
-
-function parseIssueLine(text: string, role: Role, year: number): Issue[] {
-  const raw = text.replace(/\s+/g, ' ').trim();
-  if (!raw) return [];
-
-  // Character/team guides on CBH frequently describe TPBs followed by their
-  // contents — "Cable Classic — Volume 1" on one line and
-  // "Collects: New Mutants #87, Cable #1-4, Cable: Blood & Metal #1-2" on
-  // the next. Treat "Collects:" / "Includes:" / "Contains:" lines as a
-  // list of issue refs and parse each fragment independently. "X to Y" is
-  // used interchangeably with "X-Y" inside these lines.
-  const listPrefix = raw.match(
-    /^(?:collects|includes|contains)(?:\s*\([^)]*\))?:\s*(.+)$/i,
-  );
-  if (listPrefix) {
-    const body = listPrefix[1]
-      // "Cable #5 to #14" → "Cable #5-14" so the range matcher picks it up.
-      .replace(/(\d+)\s+to\s+#?(\d+)/gi, '$1-$2');
-    // Commas are the reliable separator. " And " (or " & ") between
-    // fragments is also used — split on it only when the right-hand side
-    // looks like another title + issue reference (uppercase start). Case-
-    // insensitive: CBH writes "And" with leading cap after a #N.
-    const fragments = body
-      .split(/,\s*/)
-      .flatMap((p) => p.split(/\s+(?:and|&)\s+(?=[A-Z])/i));
-    const out: Issue[] = [];
-    for (const f of fragments) {
-      out.push(...parseIssueFragment(f.trim(), role, year));
-    }
-    return out;
-  }
-
-  return parseIssueFragment(raw, role, year);
-}
-
-function parseIssueFragment(text: string, role: Role, defaultYear: number): Issue[] {
-  const raw = text.replace(/\s+/g, ' ').trim();
-  if (!raw) return [];
-
-  // A "(YEAR)" annotation inside a fragment names the series' first year
-  // (e.g. "X-Factor (1986) #84-86"). Override the caller's default year
-  // so the catalog gets the right series key later on in the pipeline.
-  const yearMatch = raw.match(/\((19[6-9]\d|20\d\d)\)/);
-  const year = yearMatch ? parseInt(yearMatch[1], 10) : defaultYear;
-
-  // Strip TPB-volume prefixes — "Vol. 2: Wolverine #17" is the contents of
-  // a trade paperback, not an issue title. Drop the leading "Vol. N:" /
-  // "Volume N:" tokens.
-  const volStripped = raw.replace(/^(?:vol\.?\s*\d+|volume\s*\d+)[:\s]+/i, '');
-
-  // Strip parens BEFORE the other rejects + regexes — the matchers assume
-  // unparenthesised input.
-  const cleaned = volStripped
-    .replace(/\s*\(\d{4}\)/g, '')
-    .replace(/[()]/g, '')
-    .trim();
-  if (!cleaned) return [];
-
-  // Reject obvious prose (not issue references). Kept conservative so we
-  // don't drop real fragments that happen to include a stop-word.
-  if (cleaned.length > 200) return [];
-  if (/^(my review|my thoughts|as i mentioned|check out|this trade|this series|while |buy |for my|for more|also|plus |including|writer|artist|pencil|cover |variant|video companion|krakin|by the time|she |he |they |it was|after |before |during |now |then )/i.test(cleaned)) return [];
-  if (/\b(recommend|deserve|disappointing|enjoyable|review|theory|theories|essay|krakoa podcast|check out)/i.test(cleaned)) return [];
-
-  // Reject prose by proxy: the title part (before "#N") should be ≤7 words.
-  // A real issue is "X-Men #1" or "Uncanny X-Men: Messiah Complex #1", not
-  // "She appeared in Uncanny X-Men #393".
-  const preHash = cleaned.split(/\s*#\d/)[0];
-  if (preHash && preHash.split(/\s+/).length > 7) return [];
-
-  // "Title #1-5" or "Title 1-5" or "Title 1 – 5"
-  const range = cleaned.match(/^(.+?)\s*#?(\d+)\s*[\-\u2013\u2014]\s*#?(\d+)\b/);
-  if (range) {
-    const [, rawTitle, aStr, bStr] = range;
-    const title = rawTitle.replace(/[:,]\s*$/, '').trim();
-    const a = parseInt(aStr, 10), b = parseInt(bStr, 10);
-    if (b - a > 30) return []; // guard — avoids treating a year as an issue range
-    const out: Issue[] = [];
-    for (let n = a; n <= b; n++) {
-      out.push({ id: slugify(`${title}-${n}`), title, number: n, year, role });
-    }
-    return out;
-  }
-
-  const single = cleaned.match(/^(.+?)\s+#(\d+)\b/);
-  if (single) {
-    const [, rawTitle, numStr] = single;
-    const title = rawTitle.replace(/[:,]\s*$/, '').trim();
-    return [{ id: slugify(`${title}-${numStr}`), title, number: parseInt(numStr, 10), year, role }];
-  }
-
-  return [];
-}
-
 function extractIssues(source: CbhSource, html: string): Issue[] {
   const $ = cheerio.load(html);
   const root = $('.entry-content').first().length ? $('.entry-content').first() : $('article').first();
@@ -468,9 +371,8 @@ async function main() {
   }
 
   const file: EventsFile = { generatedAt: new Date().toISOString(), events };
-  const out = new URL('../pwa/src/data/events.json', import.meta.url);
-  await writeFile(out, JSON.stringify(file, null, 2));
-  console.log(`\nWrote ${out.pathname} — ${events.length} events, ${events.reduce((s, e) => s + e.issues.length, 0)} issues`);
+  writeEvents(file);
+  console.log(`\nWrote events.json — ${events.length} events, ${events.reduce((s, e) => s + e.issues.length, 0)} issues`);
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });

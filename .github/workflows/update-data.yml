@@ -52,6 +52,11 @@ jobs:
       - name: Install deps
         run: npm ci
 
+      - name: Unit tests
+        # Gate: if the CBH parser regresses, halt before any script touches
+        # events.json. Cheap — <1s.
+        run: npm run test
+
       - name: Snapshot existing enrichment
         # Protects us from losing slug/digitalId/DRN/cover when scrape-cbh.ts
         # rewrites events.json from scratch.
@@ -112,4 +117,13 @@ jobs:
           fi
           git add pwa/src/data/events.json
           git commit -m "data: refresh events.json (${{ inputs.mode }})"
-          git push
+          # Push with rebase-retry on rejection. A concurrent push (e.g.
+          # someone committed scripts or docs while the pipeline ran) would
+          # otherwise leave our data-refresh commit stranded on the runner.
+          for attempt in 1 2 3; do
+            if git push; then exit 0; fi
+            echo "push rejected (attempt $attempt) — pulling with rebase and retrying"
+            git pull --rebase origin main
+          done
+          echo "push still failing after 3 rebase attempts — giving up"
+          exit 1

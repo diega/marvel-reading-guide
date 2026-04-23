@@ -15,7 +15,9 @@
     "normalize:catalog": "tsx normalize-catalog.ts",
     "cache:snapshot": "tsx lib-enrichment-cache.ts snapshot",
     "cache:restore": "tsx lib-enrichment-cache.ts restore",
-    "pipeline": "npm run scrape:cbh && npm run scrape:wikipedia && npm run merge:manual && npm run gen:runs && npm run enrich:sitemap && npm run cleanup:pseudo && npm run normalize:catalog",
+    "pipeline": "npm run test && npm run scrape:cbh && npm run scrape:wikipedia && npm run merge:manual && npm run gen:runs && npm run enrich:sitemap && npm run cleanup:pseudo && npm run normalize:catalog",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -25,6 +27,7 @@
   "devDependencies": {
     "@types/node": "^22.9.0",
     "tsx": "^4.19.2",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.9"
   }
 }
