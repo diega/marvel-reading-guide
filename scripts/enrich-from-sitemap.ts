@@ -108,8 +108,22 @@ function candidateTitles(title: string): string[] {
   candidates.add(base.replace(/^the_/, ''));
   candidates.add(base.replace(/^x-men_/, ''));
   candidates.add(base.replace(/^uncanny_/, ''));
-  // Marvel often prefixes event one-shots with "X-Men_" ("Trial of Magneto" → "x-men_trial_of_magneto")
+  // Marvel often prefixes event one-shots with "X-Men_" ("Trial of Magneto"
+  // → "x-men_trial_of_magneto") and sometimes also keeps a leading "the"
+  // ("X-Men: The Trial of Magneto" → "x-men_the_trial_of_magneto").
   candidates.add(`x-men_${base}`);
+  candidates.add(`x-men_the_${base}`);
+  // Drop "and" — Marvel's slug convention drops it ("Wolverine and the
+  // X-Men" → "wolverine_the_x-men", not "wolverine_and_the_x-men"). Apply
+  // both as substitution and as removal.
+  candidates.add(base.replace(/_and_/g, '_'));
+  // Possessive prefix — Marvel Voices anthologies ("Marvel Voices: ..."
+  // → "marvels_voices_..."). Rarely `marvel_voices_`, usually `marvels_`.
+  if (/^marvel_/.test(base)) candidates.add(`marvels${base.slice(6)}`);
+  // Plural ↔ singular on "Infinity Comics" — sitemap has
+  // `x-men_unlimited_infinity_comic_...` (singular).
+  candidates.add(base.replace(/_infinity_comics/g, '_infinity_comic'));
+  candidates.add(base.replace(/_infinity_comic\b/g, '_infinity_comics'));
   // Handle "Title: Subtitle" → try just subtitle OR just prefix
   const colonSplit = title.split(/:\s+/);
   if (colonSplit.length > 1) {
