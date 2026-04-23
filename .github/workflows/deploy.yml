@@ -68,6 +68,19 @@ jobs:
       - name: Install deps
         run: npm ci
 
+      - name: Validate data-integrity tests
+        # Catches events.json being committed in a state the Atlas (or
+        # any other consumer) can't use — e.g. the teamEvents regression
+        # from commit 5a67dc3 where a re-scrape wiped the field and it
+        # stayed empty because the curation wasn't yet in manual-guides.
+        # Also runs the unit tests for scripts/ libs as a bonus. Cheap,
+        # <1s. Fail-fast gate: if the test catches anything, the deploy
+        # doesn't happen.
+        working-directory: scripts
+        run: |
+          npm ci
+          npm run test
+
       - name: Typecheck
         run: npm run typecheck
 

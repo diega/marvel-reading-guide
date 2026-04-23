@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-23T12:20:20.902Z",
+  "generatedAt": "2026-04-23T18:25:30.653Z",
   "catalog": {
     "4": {
       "marvelId": 4,
@@ -4770,16 +4770,6 @@
       "drn": "drn:src:marvel:unison::prod:63d169f5-87fa-45ad-831a-1fcadddde4db",
       "cover": "https://i.marvelfe.com/m/5c0de921-6813-4f27-aae9-de99a2d0fd0f/52618e68af49c.jpg"
     },
-    "12291": {
-      "marvelId": 12291,
-      "title": "X-Factor",
-      "number": 70,
-      "year": 1986,
-      "slug": "x-factor_1986_70",
-      "digitalId": 32885,
-      "drn": "drn:src:marvel:unison::prod:ed32e08b-40ca-4946-80f7-286610d3040e",
-      "cover": "https://i.marvelfe.com/m/f39383d3-b827-4aa3-a196-b3460aa7ffe6/5864318ba3d96.jpg"
-    },
     "12306": {
       "marvelId": 12306,
       "title": "X-Factor",
@@ -5950,16 +5940,6 @@
       "drn": "drn:src:marvel:unison::prod:b997d13c-e1ad-4b55-b28e-302a57e9c1b4",
       "cover": "https://i.marvelfe.com/m/bc356133-3340-4091-a8f6-68747fb1654b/511420b27bc44.jpg"
     },
-    "13822": {
-      "marvelId": 13822,
-      "title": "Uncanny X-Men",
-      "number": 281,
-      "year": 1963,
-      "slug": "uncanny_x-men_1963_281",
-      "digitalId": 30366,
-      "drn": "drn:src:marvel:unison::prod:ea544e28-19f4-4c2e-98d6-dad204a874b6",
-      "cover": "https://i.marvelfe.com/m/70805936-42db-4f50-a205-7d1eeed336f3/5910bf8c83075.jpg"
-    },
     "13835": {
       "marvelId": 13835,
       "title": "Uncanny X-Men",
@@ -6049,16 +6029,6 @@
       "digitalId": 25813,
       "drn": "drn:src:marvel:unison::prod:2cafab20-bac5-450e-901a-c16acddaa822",
       "cover": "https://i.marvelfe.com/m/94b7d3a2-ce42-4ecc-9c19-5f7368c82ec1/5914921657606.jpg"
-    },
-    "13878": {
-      "marvelId": 13878,
-      "title": "Uncanny X-Men",
-      "number": 337,
-      "year": 1963,
-      "slug": "uncanny_x-men_1963_337",
-      "digitalId": 11734,
-      "drn": "drn:src:marvel:unison::prod:8b9eea04-6a07-472c-a268-68bc5e8d19cc",
-      "cover": "https://i.marvelfe.com/m/bc566331-38bf-4252-a1b3-cb6a701c111b/5491b46db2b15.jpg"
     },
     "13907": {
       "marvelId": 13907,
@@ -6909,16 +6879,6 @@
       "digitalId": 32919,
       "drn": "drn:src:marvel:unison::prod:e9a3513a-427c-46b0-acc7-142239509c02",
       "cover": "https://i.marvelfe.com/m/9e1450d4-3c27-4b53-8092-31f4fd417b80/58a345a026bca.jpg"
-    },
-    "14284": {
-      "marvelId": 14284,
-      "title": "X-Men",
-      "number": 101,
-      "year": 1991,
-      "slug": "x-men_1991_101",
-      "digitalId": 49264,
-      "drn": "drn:src:marvel:unison::prod:5411b2dc-d4d3-4974-9043-243742a5702a",
-      "cover": "https://i.marvelfe.com/m/f0be026c-d61b-481c-9caf-cca0bc5327f1/5b61ceec8aadf.jpg"
     },
     "14293": {
       "marvelId": 14293,
@@ -8272,16 +8232,6 @@
       "drn": "drn:src:marvel:unison::prod:86286a4f-1128-4d1f-84e5-ad42fb827ce8",
       "cover": "https://i.marvelfe.com/m/fa6ff117-5c3d-4dbb-8bfb-2fa9321cdc36/58419d7c98a30.jpg"
     },
-    "17803": {
-      "marvelId": 17803,
-      "title": "West Coast Avengers",
-      "number": 61,
-      "year": 1985,
-      "slug": "west_coast_avengers_1985_61",
-      "digitalId": 10941,
-      "drn": "drn:src:marvel:unison::prod:9ba06307-b19d-456f-a1cc-32b9668490d5",
-      "cover": "https://i.marvelfe.com/m/3ec61856-fd6d-40fb-bfa3-732709c4d4e0/5ca61b3033e87.jpg"
-    },
     "17887": {
       "marvelId": 17887,
       "title": "West Coast Avengers",
@@ -8291,16 +8241,6 @@
       "digitalId": 42481,
       "drn": "drn:src:marvel:unison::prod:059b0648-c981-4522-bb78-ffb5387187cd",
       "cover": "https://i.marvelfe.com/m/d8de711e-ab67-4358-9f2c-470d216c0bad/5bc0ff66d9b10.jpg"
-    },
-    "17895": {
-      "marvelId": 17895,
-      "title": "West Coast Avengers",
-      "number": 17,
-      "year": 1985,
-      "slug": "west_coast_avengers_1985_17",
-      "digitalId": 42387,
-      "drn": "drn:src:marvel:unison::prod:958b781e-2b41-46bf-b9ec-de0208d2f220",
-      "cover": "https://i.marvelfe.com/m/ac008515-2ab2-4af5-b586-f4b2d70b1494/5bc9f8a99a1c0.jpg"
     },
     "17898": {
       "marvelId": 17898,
@@ -8331,16 +8271,6 @@
       "digitalId": 42483,
       "drn": "drn:src:marvel:unison::prod:c68ec05b-e653-492f-b61c-273520322272",
       "cover": "https://i.marvelfe.com/m/85e0b6c0-ff79-4687-a7ae-e1ed2012a9cd/5bc0ff953b2e0.jpg"
-    },
-    "17927": {
-      "marvelId": 17927,
-      "title": "West Coast Avengers",
-      "number": 46,
-      "year": 1985,
-      "slug": "west_coast_avengers_1985_46",
-      "digitalId": 5263,
-      "drn": "drn:src:marvel:unison::prod:d9862a73-af47-473a-8831-f0da9182005b",
-      "cover": "https://i.marvelfe.com/m/78ae7ce0-ed79-405f-a641-e3645419f332/5bd38531b88c7.jpg"
     },
     "17929": {
       "marvelId": 17929,
@@ -18370,16 +18300,6 @@
       "slug": "deadpool_cable_split_second_2015_3",
       "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/5052583-03.jpg"
     },
-    "53312": {
-      "marvelId": 53312,
-      "title": "Uncanny X-Men",
-      "number": 600,
-      "year": 2013,
-      "slug": "uncanny_x-men_2013_600",
-      "digitalId": 40163,
-      "drn": "drn:src:marvel:unison::prod:103720b4-339b-4a1f-bca0-025373afcb9a",
-      "cover": "https://i.marvelfe.com/m/4047b653-7e3f-4c1d-a9b8-6cf9d91055ec/561e617d948c9.jpg"
-    },
     "53532": {
       "marvelId": 53532,
       "title": "Annual",
@@ -18389,16 +18309,6 @@
       "digitalId": 36698,
       "drn": "drn:src:marvel:unison::prod:770c0b3b-2f0d-438d-b152-5f89f6cf2ebe",
       "cover": "https://i.marvelfe.com/m/550b4127-542a-4aae-a5f2-79243bb6c7d9/58da874d468d2.jpg"
-    },
-    "55231": {
-      "marvelId": 55231,
-      "title": "West Coast Avengers",
-      "number": 42,
-      "year": 1985,
-      "slug": "west_coast_avengers_1985_42",
-      "digitalId": 37717,
-      "drn": "drn:src:marvel:unison::prod:d1bd86ea-5ff1-40dd-9e0d-61d0f5d3f79a",
-      "cover": "https://i.marvelfe.com/m/84bae7ae-4eef-4d1c-ab65-ff903d6e7bd7/57cf20fd63a44.jpg"
     },
     "55433": {
       "marvelId": 55433,
@@ -21908,56 +21818,6 @@
       "drn": "drn:src:marvel:unison::prod:4353b554-e456-4015-9399-01f257698788",
       "cover": "https://i.marvelfe.com/m/9c88cc80-2f3d-44f0-b6dc-dcba4dd72479/5bff092a216f0.jpg"
     },
-    "70106": {
-      "marvelId": 70106,
-      "title": "West Coast Avengers",
-      "number": 6,
-      "year": 2018,
-      "slug": "west_coast_avengers_2018_6",
-      "digitalId": 50019,
-      "drn": "drn:src:marvel:unison::prod:ab562e02-eb3d-4f1a-a84f-fa59c30e5e60",
-      "cover": "https://i.marvelfe.com/m/e728dca2-2a3b-4283-b69b-be086480e222/5c12b56f14738.jpg"
-    },
-    "70107": {
-      "marvelId": 70107,
-      "title": "West Coast Avengers",
-      "number": 7,
-      "year": 2018,
-      "slug": "west_coast_avengers_2018_7",
-      "digitalId": 50357,
-      "drn": "drn:src:marvel:unison::prod:d6da2486-9a23-461c-976f-b6fa486e5fab",
-      "cover": "https://i.marvelfe.com/m/03cb9d73-4bad-4649-99ea-d81f808cdbd5/5c48f735cec7c.jpg"
-    },
-    "70108": {
-      "marvelId": 70108,
-      "title": "West Coast Avengers",
-      "number": 8,
-      "year": 2018,
-      "slug": "west_coast_avengers_2018_8",
-      "digitalId": 50589,
-      "drn": "drn:src:marvel:unison::prod:175c586b-325b-42bc-8538-3e070c21412c",
-      "cover": "https://i.marvelfe.com/m/1606973d-c398-45e8-a2cb-b718c127035a/5c6dd9b2344af.jpg"
-    },
-    "70109": {
-      "marvelId": 70109,
-      "title": "West Coast Avengers",
-      "number": 9,
-      "year": 2018,
-      "slug": "west_coast_avengers_2018_9",
-      "digitalId": 50898,
-      "drn": "drn:src:marvel:unison::prod:7db63b5a-7e5b-4ef8-986f-9f69ac934674",
-      "cover": "https://i.marvelfe.com/m/56b43c34-37db-4bb4-b7bc-2980ef18ec80/5c881b1a316b1.jpg"
-    },
-    "70110": {
-      "marvelId": 70110,
-      "title": "West Coast Avengers",
-      "number": 10,
-      "year": 2018,
-      "slug": "west_coast_avengers_2018_10",
-      "digitalId": 51108,
-      "drn": "drn:src:marvel:unison::prod:f0618989-4bea-43b6-b0c1-63675e24f714",
-      "cover": "https://i.marvelfe.com/m/8eba1707-6088-42b4-8280-e5b0ccfca344/5cacf715cdee1.jpg"
-    },
     "70117": {
       "marvelId": 70117,
       "title": "Return Of Wolverine",
@@ -22137,16 +21997,6 @@
       "digitalId": 48856,
       "drn": "drn:src:marvel:unison::prod:d33fddbe-b6ff-4f32-b993-6dcc1d5971bb",
       "cover": "https://i.marvelfe.com/m/8929322b-ef8d-476c-ba49-6ae75c2ac07c/5b7ed641e697f.jpg"
-    },
-    "70223": {
-      "marvelId": 70223,
-      "title": "X-Men: Blue",
-      "number": 36,
-      "year": 2017,
-      "slug": "x-men_blue_2017_36",
-      "digitalId": 49162,
-      "drn": "drn:src:marvel:unison::prod:03dda076-ec42-4454-a232-9523065f1dea",
-      "cover": "https://i.marvelfe.com/m/1bf7f6e5-4b6e-40ff-8e1d-1a7007869377/5ba00586d1775.jpg"
     },
     "71028": {
       "marvelId": 71028,
@@ -41099,7 +40949,20 @@
           "year": 2026
         }
       ],
-      "cover": "https://i.marvelfe.com/m/7da3d4f4-ce13-45c0-847b-0eb81a5e8704/5873af7045b8e.jpg"
+      "cover": "https://i.marvelfe.com/m/7da3d4f4-ce13-45c0-847b-0eb81a5e8704/5873af7045b8e.jpg",
+      "teamEvents": [
+        "messiah-complex",
+        "second-coming",
+        "necrosha",
+        "avengers-vs-x-men",
+        "fear-itself",
+        "axis",
+        "dawn-of-x",
+        "reign-of-x",
+        "destiny-of-x",
+        "judgment-day",
+        "fall-of-x"
+      ]
     },
     {
       "id": "new-mutants",
@@ -42634,7 +42497,16 @@
           "ref": 61036
         }
       ],
-      "cover": "https://i.marvelfe.com/m/afc29551-7dc1-4175-a580-b5a4ecdac779/5db841cf8eec1.jpg"
+      "cover": "https://i.marvelfe.com/m/afc29551-7dc1-4175-a580-b5a4ecdac779/5db841cf8eec1.jpg",
+      "teamEvents": [
+        "messiah-complex",
+        "second-coming",
+        "hox-pox",
+        "dawn-of-x",
+        "reign-of-x",
+        "destiny-of-x",
+        "fall-of-x"
+      ]
     },
     {
       "id": "x-men-complete",
@@ -48461,7 +48333,41 @@
           "ref": 67302
         }
       ],
-      "cover": "https://i.marvelfe.com/m/08968c00-1e88-4614-a227-f87edb4638ca/59161afbe2408.jpg"
+      "cover": "https://i.marvelfe.com/m/08968c00-1e88-4614-a227-f87edb4638ca/59161afbe2408.jpg",
+      "teamEvents": [
+        "morrison-new-x-men",
+        "whedon-astonishing-x-men",
+        "house-of-m",
+        "brubaker-uncanny-x-men",
+        "decimation",
+        "messiah-complex",
+        "fraction-uncanny-x-men",
+        "utopia",
+        "necrosha",
+        "dark-x-men",
+        "second-coming",
+        "gillen-uncanny-x-men",
+        "aaron-wolverine-and-the-x-men",
+        "age-of-x",
+        "schism",
+        "fear-itself",
+        "bendis-all-new-x-men",
+        "avengers-vs-x-men",
+        "bendis-uncanny-x-men-vol3",
+        "battle-of-the-atom",
+        "axis",
+        "inhumans-vs-x-men",
+        "hox-pox",
+        "dawn-of-x",
+        "reign-of-x",
+        "hellfire-galas",
+        "destiny-of-x",
+        "judgment-day",
+        "sins-of-sinister",
+        "fall-of-x",
+        "from-the-ashes",
+        "age-of-revelation"
+      ]
     },
     {
       "id": "utopia",
@@ -51117,13 +51023,17 @@
           "id": "cyclops-x-men-1-1963-0",
           "role": "core",
           "note": "Debut of Scott Summers",
-          "ref": 14281
+          "title": "X-Men",
+          "number": 1,
+          "year": 1963
         },
         {
           "id": "cyclops-x-men-42-1968-1",
           "role": "context",
           "note": "Death of Professor X",
-          "ref": 14331
+          "title": "X-Men",
+          "number": 42,
+          "year": 1968
         },
         {
           "id": "cyclops-giant-size-x-men-1-1975-2",
@@ -51135,7 +51045,9 @@
           "id": "cyclops-x-men-101-1976-3",
           "role": "core",
           "note": "Phoenix birth",
-          "ref": 14284
+          "title": "X-Men",
+          "number": 101,
+          "year": 1976
         },
         {
           "id": "cyclops-x-men-129-1980-4",
@@ -51183,7 +51095,9 @@
           "id": "cyclops-x-factor-70-1991-9",
           "role": "context",
           "note": "Madelyne Pryor arc resolution",
-          "ref": 12291
+          "title": "X-Factor",
+          "number": 70,
+          "year": 1991
         },
         {
           "id": "cyclops-x-men-1-1991-10",
@@ -51195,31 +51109,41 @@
           "id": "cyclops-uncanny-x-men-281-1991-11",
           "role": "core",
           "note": "Scott leads Gold Team",
-          "ref": 13822
+          "title": "Uncanny X-Men",
+          "number": 281,
+          "year": 1991
         },
         {
           "id": "cyclops-uncanny-x-men-297-1993-12",
           "role": "context",
           "note": "Scott & Jean's engagement",
-          "ref": 13838
+          "title": "Uncanny X-Men",
+          "number": 297,
+          "year": 1993
         },
         {
           "id": "cyclops-x-men-30-1994-13",
           "role": "core",
           "note": "Scott & Jean wedding",
-          "ref": 14318
+          "title": "X-Men",
+          "number": 30,
+          "year": 1994
         },
         {
           "id": "cyclops-uncanny-x-men-337-1996-14",
           "role": "context",
           "note": "Onslaught prelude",
-          "ref": 13878
+          "title": "Uncanny X-Men",
+          "number": 337,
+          "year": 1996
         },
         {
           "id": "cyclops-uncanny-x-men-392-2001-15",
           "role": "tie-in-optional",
           "note": "Post-reboot leadership",
-          "ref": 13933
+          "title": "Uncanny X-Men",
+          "number": 392,
+          "year": 2001
         },
         {
           "id": "cyclops-new-x-men-114-2001-16",
@@ -51231,13 +51155,17 @@
           "id": "cyclops-new-x-men-139-2003-17",
           "role": "core",
           "note": "Emma affair revealed",
-          "ref": 14958
+          "title": "New X-Men",
+          "number": 139,
+          "year": 2003
         },
         {
           "id": "cyclops-new-x-men-154-2004-18",
           "role": "core",
           "note": "Morrison finale",
-          "ref": 420
+          "title": "New X-Men",
+          "number": 154,
+          "year": 2004
         },
         {
           "id": "cyclops-astonishing-x-men-1-2004-19",
@@ -51249,13 +51177,17 @@
           "id": "cyclops-astonishing-x-men-24-2008-20",
           "role": "core",
           "note": "Whedon finale",
-          "ref": 17353
+          "title": "Astonishing X-Men",
+          "number": 24,
+          "year": 2008
         },
         {
           "id": "cyclops-house-of-m-1-2005-21",
           "role": "tie-in-required",
           "note": "Reality-warping event",
-          "ref": 2092
+          "title": "House of M",
+          "number": 1,
+          "year": 2005
         },
         {
           "id": "cyclops-x-men-messiah-complex-1-2007-22",
@@ -51271,7 +51203,9 @@
           "id": "cyclops-uncanny-x-men-500-2008-24",
           "role": "core",
           "note": "San Francisco era",
-          "ref": 33565
+          "title": "Uncanny X-Men",
+          "number": 500,
+          "year": 2008
         },
         {
           "id": "cyclops-dark-avengers-7-2009-25",
@@ -51283,7 +51217,9 @@
           "id": "cyclops-uncanny-x-men-513-2009-26",
           "role": "core",
           "note": "Utopia aftermath",
-          "ref": 26966
+          "title": "Uncanny X-Men",
+          "number": 513,
+          "year": 2009
         },
         {
           "id": "cyclops-x-men-schism-1-2011-27",
@@ -51319,7 +51255,9 @@
           "id": "cyclops-all-new-x-men-1-2013-32",
           "role": "core",
           "note": "Teen Scott arrives in present",
-          "ref": 43462
+          "title": "All-New X-Men",
+          "number": 1,
+          "year": 2013
         },
         {
           "id": "cyclops-x-men-battle-of-the-atom-1-2013-33",
@@ -51330,7 +51268,9 @@
           "id": "cyclops-uncanny-x-men-600-2015-34",
           "role": "core",
           "note": "Adult Scott's final pre-death appearance",
-          "ref": 53312
+          "title": "Uncanny X-Men",
+          "number": 600,
+          "year": 2015
         },
         {
           "id": "cyclops-death-of-x-1-2016-35",
@@ -51356,13 +51296,17 @@
           "id": "cyclops-x-men-blue-36-2018-38",
           "role": "tie-in-optional",
           "note": "Teens return home",
-          "ref": 70223
+          "title": "X-Men: Blue",
+          "number": 36,
+          "year": 2018
         },
         {
           "id": "cyclops-uncanny-x-men-11-2019-39",
           "role": "core",
           "note": "Adult Scott resurrected",
-          "ref": 73033
+          "title": "Uncanny X-Men",
+          "number": 11,
+          "year": 2019
         },
         {
           "id": "cyclops-house-of-x-1-2019-40",
@@ -51391,7 +51335,9 @@
         {
           "id": "cyclops-x-men-trial-of-magneto-1-2021-44",
           "role": "tie-in-required",
-          "ref": 91389
+          "title": "X-Men: Trial of Magneto",
+          "number": 1,
+          "year": 2021
         },
         {
           "id": "cyclops-immortal-x-men-1-2022-45",
@@ -51472,25 +51418,33 @@
           "id": "west-coast-avengers-west-coast-avengers-17-1986-5",
           "role": "tie-in-required",
           "note": "Graviton saga",
-          "ref": 17895
+          "title": "West Coast Avengers",
+          "number": 17,
+          "year": 1986
         },
         {
           "id": "west-coast-avengers-west-coast-avengers-42-1989-6",
           "role": "core",
           "note": "'Lost in Space-Time' — Byrne run starts",
-          "ref": 55231
+          "title": "West Coast Avengers",
+          "number": 42,
+          "year": 1989
         },
         {
           "id": "west-coast-avengers-west-coast-avengers-46-1989-7",
           "role": "core",
           "note": "Vision rebuilt without emotions",
-          "ref": 17927
+          "title": "West Coast Avengers",
+          "number": 46,
+          "year": 1989
         },
         {
           "id": "west-coast-avengers-west-coast-avengers-61-1990-8",
           "role": "context",
           "note": "Pacific Overtures — rebrand to Avengers West Coast",
-          "ref": 17803
+          "title": "West Coast Avengers",
+          "number": 61,
+          "year": 1990
         },
         {
           "id": "west-coast-avengers-avengers-west-coast-70-1991-9",
@@ -51539,27 +51493,37 @@
         {
           "id": "west-coast-avengers-west-coast-avengers-6-2019-16",
           "role": "core",
-          "ref": 70106
+          "title": "West Coast Avengers",
+          "number": 6,
+          "year": 2019
         },
         {
           "id": "west-coast-avengers-west-coast-avengers-7-2019-17",
           "role": "core",
-          "ref": 70107
+          "title": "West Coast Avengers",
+          "number": 7,
+          "year": 2019
         },
         {
           "id": "west-coast-avengers-west-coast-avengers-8-2019-18",
           "role": "core",
-          "ref": 70108
+          "title": "West Coast Avengers",
+          "number": 8,
+          "year": 2019
         },
         {
           "id": "west-coast-avengers-west-coast-avengers-9-2019-19",
           "role": "core",
-          "ref": 70109
+          "title": "West Coast Avengers",
+          "number": 9,
+          "year": 2019
         },
         {
           "id": "west-coast-avengers-west-coast-avengers-10-2019-20",
           "role": "core",
-          "ref": 70110
+          "title": "West Coast Avengers",
+          "number": 10,
+          "year": 2019
         },
         {
           "id": "west-coast-avengers-west-coast-avengers-1-2024-21",

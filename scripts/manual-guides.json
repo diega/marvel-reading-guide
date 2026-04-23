@@ -1,5 +1,28 @@
 {
   "_comment": "Hand-curated reading guides for subjects where no single scraped source works well. Issues here go through the same enricher (marvelId/slug/digitalId/DRN/cover). Roles: core = essential Cyclops/team spine, tie-in-required = crucial crossover context, tie-in-optional = recommended follow-up, context = history/backstory.",
+  "_teamEventsMappingsComment": "Per-team curated crossover memberships, the source of truth for the Atlas transit-map. Each key is a team id (category='team'), each value is a list of crossover event ids the team's reading order passes through. Hand-curated because fuzzy DRN-overlap matching produces false positives and misses one-off tie-ins that MU bundles into the series but Comic Book Herald splits into separate events. NEVER empty for a team that appears in the Atlas UI — the Atlas filters teams by `teamEvents?.length > 0`, so dropping the field silently hides the team.",
+  "teamEventsMappings": {
+    "x-force": [
+      "messiah-complex", "second-coming", "necrosha", "avengers-vs-x-men",
+      "fear-itself", "axis", "dawn-of-x", "reign-of-x", "destiny-of-x",
+      "judgment-day", "fall-of-x"
+    ],
+    "new-mutants": [
+      "messiah-complex", "second-coming", "hox-pox", "dawn-of-x",
+      "reign-of-x", "destiny-of-x", "fall-of-x"
+    ],
+    "x-men-complete": [
+      "morrison-new-x-men", "whedon-astonishing-x-men", "house-of-m",
+      "brubaker-uncanny-x-men", "decimation", "messiah-complex",
+      "fraction-uncanny-x-men", "utopia", "necrosha", "dark-x-men",
+      "second-coming", "gillen-uncanny-x-men", "aaron-wolverine-and-the-x-men",
+      "age-of-x", "schism", "fear-itself", "bendis-all-new-x-men",
+      "avengers-vs-x-men", "bendis-uncanny-x-men-vol3", "battle-of-the-atom",
+      "axis", "inhumans-vs-x-men", "hox-pox", "dawn-of-x", "reign-of-x",
+      "hellfire-galas", "destiny-of-x", "judgment-day", "sins-of-sinister",
+      "fall-of-x", "from-the-ashes", "age-of-revelation"
+    ]
+  },
   "guides": [
     {
       "id": "cyclops",

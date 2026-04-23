@@ -10,6 +10,14 @@
  * identical to a scraped event; issue IDs are generated deterministically so
  * re-merges don't duplicate.
  *
+ * Two kinds of curation coexist in manual-guides.json:
+ *   · `guides[]`               — full reading-list definitions (issues, summary, ...).
+ *   · `teamEventsMappings`     — per-team crossover-membership for the Atlas
+ *                                transit-map. Survives the scrape-cbh rewrite
+ *                                (which would otherwise wipe event-level fields
+ *                                it didn't produce) by living in this file and
+ *                                being re-applied every pipeline run.
+ *
  * Usage: `npm run merge:manual`
  */
 
@@ -30,6 +38,14 @@ interface ManualGuide extends Omit<Event, 'issues'> {
   issues: ManualIssueSpec[];
 }
 
+interface ManualFile {
+  guides: ManualGuide[];
+  /** Optional per-team crossover-membership mappings. Key = team event id,
+   *  value = list of crossover event ids. Silently skipped for teams or
+   *  events that don't exist in events.json (with a console warning). */
+  teamEventsMappings?: Record<string, string[]>;
+}
+
 function slugify(s: string): string {
   return s
     .toLowerCase()
@@ -39,11 +55,67 @@ function slugify(s: string): string {
     .replace(/^-+|-+$/g, '');
 }
 
+/**
+ * Apply per-team crossover mappings from `manual-guides.json`. Extracted so it
+ * can be unit-tested in isolation against an in-memory EventsFile fixture.
+ *
+ * Returns counts for logging; logs warnings for unknown teams or events.
+ * Silently drops unknown event ids from a mapping (keeps the valid ones) —
+ * this is what you want when a crossover gets renamed or removed from
+ * events.json and the curator hasn't caught up yet.
+ */
+export function applyTeamEventsMappings(
+  file: EventsFile,
+  mappings: Record<string, string[]>,
+): { applied: number; unknownTeams: string[]; unknownEvents: string[] } {
+  const byId = new Map(file.events.map((e) => [e.id, e]));
+  const unknownTeams: string[] = [];
+  const unknownEvents: string[] = [];
+  let applied = 0;
+
+  for (const [teamId, eventIds] of Object.entries(mappings)) {
+    const team = byId.get(teamId);
+    if (!team) {
+      unknownTeams.push(teamId);
+      continue;
+    }
+    if (team.category !== 'team') {
+      console.warn(
+        `  ⚠ teamEventsMappings['${teamId}']: entry is category='${team.category}', expected 'team' — skipping`,
+      );
+      continue;
+    }
+    const kept: string[] = [];
+    for (const eid of eventIds) {
+      const ev = byId.get(eid);
+      if (!ev) {
+        unknownEvents.push(`${teamId}→${eid}`);
+        continue;
+      }
+      kept.push(eid);
+    }
+    team.teamEvents = kept;
+    applied++;
+  }
+
+  if (unknownTeams.length) {
+    console.warn(
+      `  ⚠ teamEventsMappings: ${unknownTeams.length} unknown team id(s) skipped: ${unknownTeams.join(', ')}`,
+    );
+  }
+  if (unknownEvents.length) {
+    console.warn(
+      `  ⚠ teamEventsMappings: ${unknownEvents.length} unknown event reference(s) dropped: ${unknownEvents.join(', ')}`,
+    );
+  }
+  return { applied, unknownTeams, unknownEvents };
+}
+
 async function main() {
   const guidesPath = new URL('./manual-guides.json', import.meta.url);
 
   const file = loadEvents() as unknown as EventsFile;
-  const manual: { guides: ManualGuide[] } = JSON.parse(await readFile(guidesPath, 'utf8'));
+  const manual: ManualFile = JSON.parse(await readFile(guidesPath, 'utf8'));
 
   const byId = new Map(file.events.map((e) => [e.id, e]));
 
@@ -76,6 +148,11 @@ async function main() {
     }
   }
 
+  if (manual.teamEventsMappings) {
+    const { applied } = applyTeamEventsMappings(file, manual.teamEventsMappings);
+    if (applied) console.log(`  applied teamEventsMappings to ${applied} team(s)`);
+  }
+
   const evCovers = deriveEventCovers(file);
   const tmCovers = deriveTeamCovers(file);
   if (evCovers || tmCovers) {
@@ -87,4 +164,11 @@ async function main() {
   console.log(`\nWrote events.json`);
 }
 
-main().catch((e) => { console.error(e); process.exit(1); });
+// CLI — only fires when this file is the entry point, so tests can
+// import `applyTeamEventsMappings` without triggering a file write.
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main().catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });
+}
