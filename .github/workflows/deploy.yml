@@ -1,0 +1,187 @@
+name: Deploy PWA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'pwa/**'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-pwa
+  cancel-in-progress: false
+
+# Required repository variables (Settings → Secrets and variables → Actions
+# → Variables):
+#
+#   CF_PAGES_PROJECT   — Cloudflare Pages project name to deploy into. The
+#                        workflow fails fast if unset. No silent fallbacks
+#                        so that what gets deployed where is always obvious.
+#
+#   PWA_CUSTOM_DOMAIN  — optional. If set, the post-deploy step attaches
+#                        that hostname to the Pages project and upserts a
+#                        proxied CNAME → {CF_PAGES_PROJECT}.pages.dev in the
+#                        hosting zone. Unset = stick with *.pages.dev, and
+#                        the custom-domain step is skipped entirely.
+env:
+  CF_PAGES_PROJECT: ${{ vars.CF_PAGES_PROJECT }}
+  PWA_CUSTOM_DOMAIN: ${{ vars.PWA_CUSTOM_DOMAIN }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    permissions:
+      contents: read
+      deployments: write
+
+    defaults:
+      run:
+        working-directory: pwa
+
+    steps:
+      - name: Require CF_PAGES_PROJECT
+        working-directory: .
+        run: |
+          if [ -z "$CF_PAGES_PROJECT" ]; then
+            echo "::error::Repository variable CF_PAGES_PROJECT is not set."
+            echo ""
+            echo "Set it at Settings → Secrets and variables → Actions → Variables,"
+            echo "with the name of the Cloudflare Pages project you want this repo"
+            echo "to deploy into (e.g. 'marvel-reading-guide' or 'your-reader')."
+            echo "See README.md → 'Deploying your own copy' for the full list of"
+            echo "secrets and variables the workflow reads."
+            exit 1
+          fi
+          echo "deploying to Pages project: $CF_PAGES_PROJECT"
+
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: pwa/package-lock.json
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build
+
+      - name: Ensure Cloudflare Pages project exists
+        working-directory: .
+        env:
+          CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          status=$(curl -sS -o /tmp/pages-get.json -w "%{http_code}" \
+            -H "Authorization: Bearer $CF_API_TOKEN" \
+            "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/pages/projects/${CF_PAGES_PROJECT}")
+          if [ "$status" = "404" ]; then
+            echo "creating project ${CF_PAGES_PROJECT}…"
+            curl -sS -X POST \
+              -H "Authorization: Bearer $CF_API_TOKEN" \
+              -H "Content-Type: application/json" \
+              --data "{\"name\":\"${CF_PAGES_PROJECT}\",\"production_branch\":\"main\"}" \
+              "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/pages/projects" | head -c 400
+            echo
+          else
+            echo "project ${CF_PAGES_PROJECT} already exists (HTTP $status)"
+          fi
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=${{ env.CF_PAGES_PROJECT }} --branch=main --commit-dirty=true
+          workingDirectory: pwa
+
+      # Idempotent custom-domain binding. If `vars.PWA_CUSTOM_DOMAIN` is set:
+      # 1. Attach the hostname to the Pages project (if not already).
+      # 2. Upsert a proxied CNAME in the hosting zone pointing at
+      #    {project}.pages.dev so the Pages edge can route by hostname.
+      # Requires the CLOUDFLARE_API_TOKEN to have Zone:Read + Zone:DNS:Edit
+      # on the zone hosting the custom domain. Skipped when the variable is
+      # unset — fork maintainers who just want the default *.pages.dev URL
+      # don't have to add any extra scopes.
+      - name: Attach custom domain + sync CNAME
+        working-directory: .
+        if: env.PWA_CUSTOM_DOMAIN != ''
+        env:
+          CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -e
+          TARGET="${CF_PAGES_PROJECT}.pages.dev"
+
+          # Zone lookup: try the input as an apex first (e.g. `example.com`),
+          # then one level up (for subdomains like `www.example.com` → zone
+          # `example.com`). Works for both apex and 1-deep subdomains.
+          ZONE_ID=$(curl -sSf -H "Authorization: Bearer $CF_API_TOKEN" \
+            "https://api.cloudflare.com/client/v4/zones?name=$PWA_CUSTOM_DOMAIN" \
+            | jq -r '.result[0].id // empty')
+          if [ -z "$ZONE_ID" ]; then
+            PARENT="${PWA_CUSTOM_DOMAIN#*.}"
+            ZONE_ID=$(curl -sSf -H "Authorization: Bearer $CF_API_TOKEN" \
+              "https://api.cloudflare.com/client/v4/zones?name=$PARENT" \
+              | jq -r '.result[0].id // empty')
+          fi
+          if [ -z "$ZONE_ID" ]; then
+            echo "!! zone for $PWA_CUSTOM_DOMAIN not found under this token — aborting"
+            exit 1
+          fi
+
+          echo "domain: $PWA_CUSTOM_DOMAIN"
+          echo "target: $TARGET"
+          echo "zone id: $ZONE_ID"
+
+          # (1) Attach custom domain to Pages project (idempotent — GET first).
+          ALREADY=$(curl -sSf -H "Authorization: Bearer $CF_API_TOKEN" \
+            "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/pages/projects/${CF_PAGES_PROJECT}/domains" \
+            | jq -r --arg d "$PWA_CUSTOM_DOMAIN" '.result[] | select(.name == $d) | .name' \
+            | head -n 1)
+          if [ -n "$ALREADY" ]; then
+            echo "$PWA_CUSTOM_DOMAIN already attached to ${CF_PAGES_PROJECT}"
+          else
+            echo "attaching $PWA_CUSTOM_DOMAIN → project ${CF_PAGES_PROJECT}"
+            curl -sSf -X POST \
+              -H "Authorization: Bearer $CF_API_TOKEN" \
+              -H "Content-Type: application/json" \
+              --data "{\"name\":\"$PWA_CUSTOM_DOMAIN\"}" \
+              "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/pages/projects/${CF_PAGES_PROJECT}/domains" \
+              > /dev/null
+            echo "attached"
+          fi
+
+          # (2) Upsert CNAME pointing at {project}.pages.dev.
+          REC=$(curl -sSf -H "Authorization: Bearer $CF_API_TOKEN" \
+            "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records?type=CNAME&name=$PWA_CUSTOM_DOMAIN")
+          REC_ID=$(echo "$REC" | jq -r '.result[0].id // empty')
+          REC_CONTENT=$(echo "$REC" | jq -r '.result[0].content // empty')
+
+          if [ -z "$REC_ID" ]; then
+            echo "creating CNAME $PWA_CUSTOM_DOMAIN -> $TARGET"
+            curl -sSf -X POST \
+              -H "Authorization: Bearer $CF_API_TOKEN" \
+              -H "Content-Type: application/json" \
+              --data "{\"type\":\"CNAME\",\"name\":\"$PWA_CUSTOM_DOMAIN\",\"content\":\"$TARGET\",\"proxied\":true,\"ttl\":1}" \
+              "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" > /dev/null
+            echo "created"
+          elif [ "$REC_CONTENT" = "$TARGET" ]; then
+            echo "CNAME already at $TARGET — no change"
+          else
+            echo "repointing CNAME: $REC_CONTENT -> $TARGET"
+            curl -sSf -X PATCH \
+              -H "Authorization: Bearer $CF_API_TOKEN" \
+              -H "Content-Type: application/json" \
+              --data "{\"content\":\"$TARGET\"}" \
+              "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/$REC_ID" > /dev/null
+            echo "updated"
+          fi

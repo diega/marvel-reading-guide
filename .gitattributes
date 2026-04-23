@@ -1,0 +1,18 @@
+# Enforce LF line endings on checkout across platforms (most relevant for scripts)
+* text=auto eol=lf
+
+# Binary files — don't touch, don't diff
+*.png binary
+*.jpg binary
+*.ico binary
+*.webp binary
+
+# Generated data — mark so GitHub's Linguist doesn't count these as "your code"
+# and keeps the language stats focused on actual source files.
+pwa/src/data/events.json linguist-generated
+pwa/package-lock.json linguist-generated
+scripts/package-lock.json linguist-generated
+scripts/.enrichment-cache.json linguist-generated
+
+# Hide collections of auto-generated icons from PR diffs
+pwa/public/icons/*.png linguist-generated

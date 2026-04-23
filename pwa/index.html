@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#0b0b0e" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Marvel Reading Guide" />
+    <title>Marvel Reading Guide</title>
+    <!--
+      Import map for runtime-loaded overlay modules (see /extensions/index.js).
+      Redirects bare `react` / `react/jsx-runtime` specifiers inside an overlay
+      bundle to the host's React instance (via shim files that read off
+      globalThis). Ignored by the host's own bundler — Vite resolves these
+      directly at build time.
+    -->
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "/vendor/react-shim.js",
+          "react/jsx-runtime": "/vendor/react-jsx-runtime-shim.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

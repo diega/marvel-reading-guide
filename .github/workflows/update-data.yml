@@ -1,0 +1,106 @@
+name: Update reading-list data
+
+# Manually triggered workflow to re-scrape + re-enrich pwa/src/data/events.json.
+# We never schedule this automatically — Marvel.com rate-limits by IP and the
+# dataset is stable enough that re-running on demand is fine.
+#
+# Three modes, selectable on dispatch:
+#   · full           run everything (scrape + wikipedia + manual + runs + enrich + cv)
+#   · enrich         just re-run the enrichers against the existing events.json
+#   · comicvine      only the ComicVine cover top-up (cheap, safe)
+#
+# The workflow commits and pushes the updated events.json back, which then triggers
+# the Deploy PWA workflow on the same branch.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'What to run'
+        type: choice
+        required: true
+        default: enrich
+        options:
+          - full
+          - enrich
+          - comicvine
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    defaults:
+      run:
+        working-directory: scripts
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: scripts/package-lock.json
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Snapshot existing enrichment
+        # Protects us from losing slug/digitalId/DRN/cover when scrape-cbh.ts
+        # rewrites events.json from scratch.
+        run: npm run cache:snapshot
+
+      - name: Scrape CBH
+        if: inputs.mode == 'full'
+        run: npm run scrape:cbh
+
+      - name: Scrape Wikipedia
+        if: inputs.mode == 'full'
+        run: npm run scrape:wikipedia
+
+      - name: Merge manual guides
+        if: inputs.mode == 'full'
+        run: npm run merge:manual
+
+      - name: Generate runs
+        if: inputs.mode == 'full'
+        run: npm run gen:runs
+
+      - name: Restore enrichment cache
+        if: inputs.mode == 'full'
+        run: npm run cache:restore
+
+      - name: Enrich from sitemap + marvel.com + bifrost
+        if: inputs.mode == 'full' || inputs.mode == 'enrich'
+        run: npm run enrich:sitemap
+
+      - name: Enrich from ComicVine (covers only)
+        if: inputs.mode == 'full' || inputs.mode == 'enrich' || inputs.mode == 'comicvine'
+        env:
+          CV_API_KEY: ${{ secrets.CV_API_KEY }}
+        run: |
+          if [ -z "$CV_API_KEY" ]; then
+            echo "CV_API_KEY not set — skipping ComicVine enricher"
+          else
+            npm run enrich:comicvine
+          fi
+
+      - name: Commit + push updates
+        working-directory: .
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          if git diff --quiet pwa/src/data/events.json; then
+            echo "No changes to events.json"
+            exit 0
+          fi
+          git add pwa/src/data/events.json
+          git commit -m "data: refresh events.json (${{ inputs.mode }})"
+          git push

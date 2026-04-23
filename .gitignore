@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.env
+.env.local
+.DS_Store
+*.log
+
+# TypeScript incremental build artifacts
+*.tsbuildinfo
+
+# Claude Code per-session settings (local tooling state, not project config)
+.claude/
+
+# Script caches
+scripts/.enrichment-cache.json
+scripts/.marvel-cache.json

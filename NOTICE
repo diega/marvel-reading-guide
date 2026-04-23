@@ -1,0 +1,65 @@
+Marvel Reading Guide
+Copyright © 2026 Diego López León
+https://github.com/diega/marvel-reading-guide
+
+This product contains:
+  - Source code, build scripts, and documentation licensed under
+    Apache License 2.0 (see LICENSE).
+  - A curated reading-list dataset (pwa/src/data/events.json) licensed
+    under Creative Commons Attribution 4.0 International (CC BY 4.0):
+      https://creativecommons.org/licenses/by/4.0/
+
+Redistributions and derivative works must preserve this NOTICE and the
+copyright / attribution line above. For the dataset specifically, the
+CC BY 4.0 attribution requirement is satisfied by including the URL
+and author line in any page or surface that presents the data.
+
+Marvel, X-Men and all related character names, team names, titles, logos,
+and imagery are trademarks of Marvel Entertainment, LLC. This project is
+a non-commercial, personal-use fan companion.
+
+--------------------------------------------------------------------------
+Upstream data sources
+--------------------------------------------------------------------------
+
+`events.json` is assembled from several upstream sources. This project's
+original contribution is the **curation and arrangement**: which issues
+are part of which event, their depth-level classification (α/ε/Ω), the
+role assignments (core / tie-in / context), the cross-references between
+events, and the editorial notes. The underlying facts — issue titles,
+numbers, publication years, cover URLs — come from:
+
+  Comic Book Herald
+  https://www.comicbookherald.com/
+    Event reading orders scraped from public "reading guide" pages.
+    The original selection of which issues belong to an event is CBH's
+    editorial work; this project restructures that information and
+    combines it with the sources below. When in doubt, cite CBH.
+
+  Wikipedia
+  https://en.wikipedia.org/
+    Event summaries and title lists for crossovers CBH doesn't cover
+    cleanly. Wikipedia content is licensed CC BY-SA 4.0. This project
+    extracts only facts (titles, issue numbers, publication years) which
+    are not subject to copyright (Feist Publications, Inc. v. Rural
+    Telephone Service Co.); creative text is not redistributed.
+
+  Marvel.com sitemap + bifrost GraphQL
+  https://www.marvel.com/sitemap/ · bifrost.marvel.com
+    Issue identifiers (marvelId, digitalId, DRN, slug) and cover URLs
+    come from Marvel's public unauthenticated endpoints. Cover URLs in
+    events.json point back to Marvel's own CDN; no images are
+    redistributed.
+
+  ComicVine API
+  https://comicvine.gamespot.com/api/
+    Cover URL fallback for series Marvel doesn't index on its sitemap.
+    Fetched with a user-provided ComicVine API key. ComicVine's terms of
+    service require attribution for any use of their data, which this
+    NOTICE satisfies.
+
+The CC BY 4.0 license on events.json covers THIS PROJECT'S curation,
+arrangement, depth-level annotations, role assignments, cross-references,
+and editorial notes. It does not grant rights to (a) Marvel's copyrighted
+material referenced by identifier and URL, or (b) the upstream sources'
+own curated/creative content.

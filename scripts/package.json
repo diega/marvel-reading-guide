@@ -1,0 +1,28 @@
+{
+  "name": "marvel-reading-guide-scripts",
+  "private": true,
+  "type": "module",
+  "description": "Data pipeline that produces pwa/src/data/events.json from public sources.",
+  "scripts": {
+    "scrape:cbh": "tsx scrape-cbh.ts",
+    "scrape:wikipedia": "tsx scrape-wikipedia.ts",
+    "merge:manual": "tsx merge-manual.ts",
+    "gen:runs": "tsx gen-runs.ts",
+    "enrich:sitemap": "tsx enrich-from-sitemap.ts",
+    "enrich:sitemap:fast": "tsx enrich-from-sitemap.ts --only-sitemap",
+    "enrich:comicvine": "tsx enrich-from-comicvine.ts",
+    "cache:snapshot": "tsx lib-enrichment-cache.ts snapshot",
+    "cache:restore": "tsx lib-enrichment-cache.ts restore",
+    "pipeline": "npm run scrape:cbh && npm run scrape:wikipedia && npm run merge:manual && npm run gen:runs && npm run enrich:sitemap",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "_comment": "Manual corrections for issues that the auto-enricher can't resolve. Key format: 'normalized_title|number|year'. Normalization: lowercase, &→and, trim. Year is optional (use '*' to match any year). Values override the auto-match — if slug is set, marvelId/digitalId should be set too so the deeplink works.",
+  "entries": [
+    {
+      "title": "Sentinel Squad",
+      "number": 1, "year": 2006,
+      "marvelId": 3425, "slug": "sentinel_squad_one_2006_1",
+      "digitalId": 3416
+    },
+    {
+      "title": "Sentinel Squad",
+      "number": 2, "year": 2006,
+      "marvelId": 3543, "slug": "sentinel_squad_one_2006_2",
+      "digitalId": 3417
+    },
+    {
+      "title": "Sentinel Squad",
+      "number": 3, "year": 2006,
+      "marvelId": 3950, "slug": "sentinel_squad_one_2006_3"
+    },
+    {
+      "title": "Sentinel Squad",
+      "number": 4, "year": 2006,
+      "slug": "sentinel_squad_one_2006_4"
+    },
+    {
+      "title": "Sentinel Squad",
+      "number": 5, "year": 2006,
+      "slug": "sentinel_squad_one_2006_5"
+    },
+    {
+      "title": "Giant Size Ms. Marvel",
+      "number": 1, "year": 2006,
+      "marvelId": 3569, "slug": "giant-size_ms_marvel_1_2006_1"
+    },
+    {
+      "title": "Trial of Magneto",
+      "number": 1, "year": 2021,
+      "slug": "x-men_the_trial_of_magneto_2021_1"
+    },
+    {
+      "title": "Trial of Magneto",
+      "number": 2, "year": 2021,
+      "slug": "x-men_the_trial_of_magneto_2021_2"
+    },
+    {
+      "title": "Trial of Magneto",
+      "number": 3, "year": 2021,
+      "slug": "x-men_the_trial_of_magneto_2021_3"
+    },
+    {
+      "title": "Trial of Magneto",
+      "number": 4, "year": 2021,
+      "slug": "x-men_the_trial_of_magneto_2021_4"
+    },
+    {
+      "title": "Trial of Magneto",
+      "number": 5, "year": 2021,
+      "slug": "x-men_the_trial_of_magneto_2021_5"
+    },
+    {
+      "title": "Magneto",
+      "number": 23, "year": 2014,
+      "slug": "magneto_2014_23"
+    },
+    {
+      "title": "Magneto",
+      "number": 24, "year": 2014,
+      "slug": "magneto_2014_24"
+    },
+    {
+      "title": "Magneto",
+      "number": 25, "year": 2014,
+      "slug": "magneto_2014_25"
+    },
+    {
+      "title": "Hellfire Gala 2022",
+      "number": 1, "year": 2022,
+      "slug": "x-men_hellfire_gala_2022_2022_1"
+    },
+    {
+      "title": "Hellfire Gala 2022",
+      "number": 1, "year": 2023,
+      "slug": "x-men_hellfire_gala_2022_2022_1"
+    },
+    {
+      "title": "Planet-Sized X-Men",
+      "number": 1, "year": 2021,
+      "slug": "planet-sized_x-men_2021_1"
+    },
+    {
+      "title": "X-Men Annual 2022",
+      "number": 1, "year": 2022,
+      "slug": "x-men_annual_2022_1"
+    },
+    {
+      "title": "Rogue and Gambit",
+      "number": 1, "year": 2023,
+      "slug": "rogue_and_gambit_2023_1"
+    },
+    {
+      "title": "Rogue and Gambit",
+      "number": 2, "year": 2023,
+      "slug": "rogue_and_gambit_2023_2"
+    },
+    {
+      "title": "Rogue and Gambit",
+      "number": 3, "year": 2023,
+      "slug": "rogue_and_gambit_2023_3"
+    },
+    {
+      "title": "Rogue and Gambit",
+      "number": 4, "year": 2023,
+      "slug": "rogue_and_gambit_2023_4"
+    },
+    {
+      "title": "Rogue and Gambit",
+      "number": 5, "year": 2023,
+      "slug": "rogue_and_gambit_2023_5"
+    },
+    {
+      "title": "Sabretooth and the Exiles",
+      "number": 1, "year": 2023,
+      "slug": "sabretooth_and_the_exiles_2023_1"
+    },
+    {
+      "title": "Sabretooth and the Exiles",
+      "number": 2, "year": 2023,
+      "slug": "sabretooth_and_the_exiles_2023_2"
+    },
+    {
+      "title": "Sabretooth and the Exiles",
+      "number": 3, "year": 2023,
+      "slug": "sabretooth_and_the_exiles_2023_3"
+    },
+    {
+      "title": "Sabretooth and the Exiles",
+      "number": 4, "year": 2023,
+      "slug": "sabretooth_and_the_exiles_2023_4"
+    },
+    {
+      "title": "Sabretooth and the Exiles",
+      "number": 5, "year": 2023,
+      "slug": "sabretooth_and_the_exiles_2023_5"
+    },
+    {
+      "title": "X-Necrosha",
+      "number": 1, "year": 2009,
+      "slug": "x-necrosha_2009_1"
+    },
+    {
+      "title": "Savage Avengers",
+      "number": 1, "year": 2019,
+      "slug": "savage_avengers_2019_1"
+    },
+    {
+      "title": "Marvel Voices: Pride",
+      "number": 1, "year": 2021,
+      "slug": "marvels_voices_pride_2021_1"
+    },
+    {
+      "title": "Marvel Voices: Indigenous Voices",
+      "number": 1, "year": 2020,
+      "slug": "marvels_voices_indigenous_voices_2020_1"
+    },
+    {
+      "title": "Marvel Voices: Pride",
+      "number": 1, "year": 2022,
+      "slug": "marvels_voices_pride_2022_1"
+    },
+    {
+      "title": "Fear Itself: The Fearless",
+      "number": 1, "year": 2011,
+      "slug": "fear_itself_the_fearless_2011_1"
+    },
+    {
+      "title": "Captain America and the Mighty Avengers",
+      "number": 1, "year": 2014,
+      "slug": "captain_america_and_the_mighty_avengers_2014_1"
+    },
+    {
+      "title": "Iron Man 2.0",
+      "number": 1, "year": 2011,
+      "slug": "iron_man_20_2011_1"
+    },
+    {
+      "title": "Deadpool and the Mercs For Money",
+      "number": 7, "year": 2016,
+      "slug": "deadpool_and_the_mercs_for_money_2016_7"
+    }
+  ]
+}
