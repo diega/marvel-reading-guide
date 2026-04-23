@@ -37,6 +37,7 @@ function merge(overrides: AppExtensions): ResolvedExtensions {
     progress: overrides.progress ?? defaultProgress,
     deeplink: overrides.deeplink ?? defaultDeeplink,
     AccountExtras: overrides.AccountExtras ?? null,
+    AppBanner: overrides.AppBanner ?? null,
   };
 }
 

@@ -148,6 +148,11 @@ export interface AppExtensions {
   /** Component rendered inside the Account page to host overlay-specific UI
    *  (e.g. a "Sign out" button, account details). Null in the default bundle. */
   AccountExtras?: ComponentType;
+  /** Component rendered at the top of every route — for overlay-managed
+   *  status banners (pull failures, session expiry, etc.). The component is
+   *  responsible for its own show/hide logic; returning `null` is expected
+   *  when there's nothing to show. Null in the default bundle. */
+  AppBanner?: ComponentType;
 }
 
 /** Runtime value with all slots populated (defaults fill missing overrides). */
@@ -157,6 +162,7 @@ export type ResolvedExtensions = Required<{
   deeplink: DeeplinkResolver;
 }> & {
   AccountExtras: ComponentType | null;
+  AppBanner: ComponentType | null;
 };
 
 // ---------------------------------------------------------------------------
