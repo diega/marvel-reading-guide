@@ -11,16 +11,17 @@
     <title>Marvel Reading Guide</title>
     <!--
       Import map for runtime-loaded overlay modules (see /extensions/index.js).
-      Redirects bare `react` / `react/jsx-runtime` specifiers inside an overlay
-      bundle to the host's React instance (via shim files that read off
-      globalThis). Ignored by the host's own bundler — Vite resolves these
-      directly at build time.
+      Redirects bare `react` / `react/jsx-runtime` / `react-router-dom`
+      specifiers inside an overlay bundle to shim files under /vendor/ that
+      re-export the host's own instances. Ignored by the host's own bundler
+      — Vite resolves these directly at build time.
     -->
     <script type="importmap">
       {
         "imports": {
           "react": "/vendor/react-shim.js",
-          "react/jsx-runtime": "/vendor/react-jsx-runtime-shim.js"
+          "react/jsx-runtime": "/vendor/react-jsx-runtime-shim.js",
+          "react-router-dom": "/vendor/react-router-dom-shim.js"
         }
       }
     </script>

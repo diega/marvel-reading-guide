@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as JSXRuntime from 'react/jsx-runtime';
+import * as ReactRouterDom from 'react-router-dom';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
@@ -11,16 +12,21 @@ import { LevelProvider } from './lib/level-context';
 import './styles.css';
 
 /**
- * Stash the host's React instances on globalThis *before* the extension
- * loader runs. Overlay bundles import bare `react` / `react/jsx-runtime`; an
- * import map in index.html redirects those specifiers to shim files under
- * `/vendor/` which read off these globals. This keeps both sides on one
- * React instance (otherwise hooks throw "Invalid hook call").
+ * Stash the host's React + react-router-dom instances on globalThis *before*
+ * the extension loader runs. Overlay bundles import bare `react`,
+ * `react/jsx-runtime` and `react-router-dom`; the import map in index.html
+ * redirects those specifiers to shim files under `/vendor/` which read off
+ * these globals. Goal: one shared instance per library across host and
+ * overlay — otherwise hooks throw ("Invalid hook call") or router context
+ * is missing ("useNavigate() may be used only in the context of a
+ * <Router>").
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 (globalThis as any).__MRG_REACT__ = React;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 (globalThis as any).__MRG_REACT_JSX_RUNTIME__ = JSXRuntime;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+(globalThis as any).__MRG_REACT_ROUTER__ = ReactRouterDom;
 
 /**
  * App bootstrap.
