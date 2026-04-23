@@ -87,8 +87,11 @@ export type IssueSyncState = 'synced' | 'not-synced' | 'syncing' | 'failed';
  * scripted abuse.
  */
 export interface ProgressAdapter {
-  /** Live set of issue IDs marked as read. Must re-render on change. */
-  useReadSet(): ReadonlySet<string>;
+  /** Live map of issue IDs marked as read → their `readAt` timestamp
+   *  (epoch millis). `.has(id)` answers the boolean membership question
+   *  the same as a Set would; `.get(id)` returns the timestamp for
+   *  recency-based sorting (e.g. "Continue reading" ordering on Home). */
+  useReadSet(): ReadonlyMap<string, number>;
   /** Persist `issueId` as read (local only — does not push to any remote). */
   markRead(issueId: string): Promise<void>;
   /** Remove the local read mark for `issueId` (local only). */
@@ -109,6 +112,25 @@ export interface ProgressAdapter {
    * affordance. The default implementation is a no-op.
    */
   pushSync(issue: Issue): Promise<void>;
+  /**
+   * Live map of `issueId → InProgressPosition` for issues the user has
+   * started but not finished. The default local adapter returns an empty
+   * map — "in progress" is a remote-side concept (MU tracks mid-issue
+   * page positions; a local-only reader only has binary read/unread).
+   *
+   * The Continue Reading row on Home consumes this alongside the readSet
+   * to show a subtle "reading" indicator on guides where the user is
+   * mid-issue per the remote.
+   */
+  useInProgress(): ReadonlyMap<string, InProgressPosition>;
+}
+
+/** Per-issue reading progress inside an issue (mid-issue position). */
+export interface InProgressPosition {
+  /** Current page, 1-indexed. May be decimal for sub-page scroll positions. */
+  position: number;
+  /** Total page count. */
+  total: number;
 }
 
 // ---------------------------------------------------------------------------

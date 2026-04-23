@@ -15,6 +15,7 @@ import type {
   AuthProvider,
   AuthState,
   DeeplinkResolver,
+  InProgressPosition,
   IssueSyncState,
   ProgressAdapter,
 } from './extensions';
@@ -35,14 +36,18 @@ export const defaultAuth: AuthProvider = {
 // Progress — local-only via Dexie
 // ---------------------------------------------------------------------------
 
-// Empty sync map reused across renders — returning a new Map on every call
+// Empty maps reused across renders — returning a new Map on every call
 // would break `useMemo` deps and cause consumers to re-render forever.
 const EMPTY_SYNC_MAP: ReadonlyMap<string, IssueSyncState> = new Map();
+const EMPTY_IN_PROGRESS: ReadonlyMap<string, InProgressPosition> = new Map();
 
 export const defaultProgress: ProgressAdapter = {
   useReadSet() {
     const rows = useLiveQuery(() => db.progress.toArray(), [], []);
-    return useMemo(() => new Set((rows ?? []).map((r) => r.issueId)), [rows]);
+    return useMemo(
+      () => new Map((rows ?? []).map((r) => [r.issueId, r.readAt] as const)),
+      [rows],
+    );
   },
   markRead: (issueId) => markIssueRead(issueId),
   markUnread: (issueId) => markIssueUnread(issueId),
@@ -51,6 +56,8 @@ export const defaultProgress: ProgressAdapter = {
   pushSync: async () => {
     /* no-op: no remote to sync against */
   },
+  // Local-only adapter has no mid-issue position concept.
+  useInProgress: () => EMPTY_IN_PROGRESS,
 };
 
 // ---------------------------------------------------------------------------

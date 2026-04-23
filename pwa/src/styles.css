@@ -67,6 +67,101 @@ button { font-family: inherit; }
   padding: 16px;
 }
 
+/* Continue reading row (above the teams/characters grids) */
+.continue-reading {
+  margin-bottom: 18px;
+}
+.continue-row {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  /* iOS momentum scrolling */
+  -webkit-overflow-scrolling: touch;
+  /* Snap each card to the leading edge as the user flicks */
+  scroll-snap-type: x mandatory;
+  padding-bottom: 6px;  /* room for the browser's scroll affordance */
+  /* Hide scrollbar but keep functionality */
+  scrollbar-width: thin;
+}
+.continue-row::-webkit-scrollbar { height: 6px; }
+.continue-row::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+.continue-card {
+  display: flex;
+  flex: 0 0 72%;
+  max-width: 280px;
+  scroll-snap-align: start;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.1s ease, border-color 0.1s ease;
+  min-height: 88px;
+}
+.continue-card:active { transform: scale(0.98); }
+.continue-card-cover {
+  position: relative;
+  flex: 0 0 72px;
+  background-size: cover;
+  background-position: center 25%;
+  background-color: var(--bg-elev-2);
+}
+.continue-card-cover.placeholder {
+  background: linear-gradient(135deg, var(--bg-elev-2), #2a2a33);
+}
+.continue-card-cover-scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(11,11,14,0) 0%, rgba(11,11,14,0.35) 100%);
+}
+.continue-reading-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 11px;
+  line-height: 1;
+  padding: 3px 5px;
+  background: rgba(11, 11, 14, 0.8);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  backdrop-filter: blur(4px);
+}
+.continue-card-body {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.continue-card-title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.continue-card-progress .progress-bar {
+  height: 3px;
+}
+.continue-card-progress .progress-label {
+  font-size: 10px;
+  color: var(--fg-muted);
+  margin-top: 3px;
+}
+.continue-card-next {
+  font-size: 11px;
+  color: var(--fg);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+.continue-card-next .muted { color: var(--fg-muted); }
+
 /* Events grid */
 .events {
   display: grid;
