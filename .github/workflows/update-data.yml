@@ -28,7 +28,12 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    # Full enrichment of a freshly-scraped events.json involves ~3000 issue
+    # lookups against marvel.com (rate-limited, ~1.5s each) plus bifrost +
+    # ComicVine fallbacks. Budget generously — under-budgeting here means
+    # the pipeline's commit never lands and hours of rate-limited work are
+    # thrown away. Idle time is free.
+    timeout-minutes: 300
 
     permissions:
       contents: write
@@ -85,6 +90,30 @@ jobs:
       - name: Enrich from sitemap + marvel.com + bifrost
         if: inputs.mode == 'full' || inputs.mode == 'enrich'
         run: npm run enrich:sitemap
+
+      - name: Checkpoint commit after sitemap enrich
+        # Critical: persist the sitemap/bifrost work before the next heavy
+        # step. If ComicVine or a later step times out, we don't want to
+        # lose the hour of rate-limited marvel.com lookups we just did.
+        # The final "Commit + push" step will either have nothing more to
+        # commit or will carry over the remaining deltas on top of this.
+        if: inputs.mode == 'full' || inputs.mode == 'enrich'
+        working-directory: .
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          if git diff --quiet pwa/src/data/events.json; then
+            echo "no changes yet — nothing to checkpoint"
+            exit 0
+          fi
+          git add pwa/src/data/events.json
+          git commit -m "data: checkpoint after sitemap enrich (${{ inputs.mode }})"
+          for attempt in 1 2 3; do
+            if git push; then exit 0; fi
+            echo "push rejected (attempt $attempt) — rebase + retry"
+            git pull --rebase origin main
+          done
+          echo "checkpoint push failed; continuing anyway — final commit will retry"
 
       - name: Enrich from ComicVine (covers only)
         if: inputs.mode == 'full' || inputs.mode == 'enrich' || inputs.mode == 'comicvine'
