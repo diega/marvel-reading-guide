@@ -92,6 +92,12 @@ jobs:
             npm run enrich:comicvine
           fi
 
+      - name: Propagate enriched metadata across duplicate issue entries
+        # Always runs — cheap post-processing; fills fields that the per-entry
+        # enrichers might have populated for one copy of an issue but not the
+        # other (same marvelId across different guides).
+        run: npm run enrich:dedup
+
       - name: Commit + push updates
         working-directory: .
         run: |

@@ -28,6 +28,7 @@
 import { getAllEvents } from './data';
 import type { AppExtensions, ExtensionsHostContext, ResolvedExtensions } from './extensions';
 import { defaultAuth, defaultDeeplink, defaultProgress } from './extensions-defaults';
+import { useLang } from './i18n';
 
 const OVERLAY_URL = '/extensions/index.js';
 
@@ -43,7 +44,16 @@ function merge(overrides: AppExtensions): ResolvedExtensions {
 
 function buildHostContext(): ExtensionsHostContext {
   const allIssues = getAllEvents().flatMap((e) => e.issues);
-  return { issues: allIssues };
+  return {
+    issues: allIssues,
+    i18n: {
+      // `useLang` is a React hook — the overlay calls it from inside its
+      // own components at render time, at which point React resolves
+      // `useContext(I18nCtx)` against the caller's tree. Safe to pass as a
+      // function reference here.
+      useLang,
+    },
+  };
 }
 
 type OverlayModule = {

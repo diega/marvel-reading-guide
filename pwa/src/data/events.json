@@ -614,7 +614,8 @@
           "year": 2006,
           "role": "core",
           "marvelId": 17203,
-          "slug": "generation_m_2005_1"
+          "slug": "generation_m_2005_1",
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/11/110017/2764314-cover.jpg"
         },
         {
           "id": "decimation-x-men-generation-m-2",
@@ -623,7 +624,8 @@
           "year": 2006,
           "role": "core",
           "marvelId": 3209,
-          "slug": "generation_m_2005_2"
+          "slug": "generation_m_2005_2",
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/787/89873-18145-106334-1-generation-m.jpg"
         },
         {
           "id": "decimation-x-men-generation-m-3",
@@ -632,7 +634,8 @@
           "year": 2006,
           "role": "core",
           "marvelId": 3417,
-          "slug": "generation_m_2005_3"
+          "slug": "generation_m_2005_3",
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/787/89875-18145-106335-1-generation-m.jpg"
         },
         {
           "id": "decimation-x-men-generation-m-4",
@@ -641,7 +644,8 @@
           "year": 2006,
           "role": "core",
           "marvelId": 3532,
-          "slug": "generation_m_2005_4"
+          "slug": "generation_m_2005_4",
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/787/89876-18145-106336-1-generation-m.jpg"
         },
         {
           "id": "decimation-x-men-generation-m-5",
@@ -650,7 +654,8 @@
           "year": 2006,
           "role": "core",
           "marvelId": 3980,
-          "slug": "generation_m_2005_5"
+          "slug": "generation_m_2005_5",
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/787/89877-18145-106337-1-generation-m.jpg"
         },
         {
           "id": "decimation-sentinel-squad-o-n-e-1",
@@ -12006,7 +12011,8 @@
           "year": 2026,
           "role": "tie-in-required",
           "marvelId": 13682,
-          "slug": "uncanny_x-men_2024_1"
+          "slug": "uncanny_x-men_2024_1",
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/3504551-01a.jpg"
         },
         {
           "id": "collects-uncanny-x-men-2",
@@ -24438,7 +24444,8 @@
           "year": 2026,
           "role": "tie-in-required",
           "marvelId": 38489,
-          "slug": "x-men_schism_2011_4"
+          "slug": "x-men_schism_2011_4",
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/9/96747/2019631-x_men_schism_4_0000.jpg"
         },
         {
           "id": "schism-5",
@@ -29450,7 +29457,8 @@
           "year": 2024,
           "role": "core",
           "marvelId": 13682,
-          "slug": "uncanny_x-men_2024_1"
+          "slug": "uncanny_x-men_2024_1",
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/3504551-01a.jpg"
         },
         {
           "id": "uncanny-x-men-vol-6-2",
@@ -34299,7 +34307,8 @@
           "marvelId": 14933,
           "slug": "new_x-men_2001_114",
           "digitalId": 3049,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/4/51150-9121-66992-1-new-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/4/51150-9121-66992-1-new-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:d5403afa-3b3b-43e6-8558-87fe02723199"
         },
         {
           "id": "morrison-new-x-men-115",
@@ -34310,7 +34319,8 @@
           "marvelId": 14934,
           "slug": "new_x-men_2001_115",
           "digitalId": 6566,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/4/51151-9121-66993-1-new-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/4/51151-9121-66993-1-new-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:edc62ca8-a628-466e-92f5-f265b83506fd"
         },
         {
           "id": "morrison-new-x-men-116",
@@ -34321,7 +34331,8 @@
           "marvelId": 14935,
           "slug": "new_x-men_2001_116",
           "digitalId": 6567,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/4/51152-9121-66994-1-new-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/4/51152-9121-66994-1-new-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:7964d619-e7f4-404f-95aa-2ac441f0b2ae"
         },
         {
           "id": "morrison-new-x-men-117",
@@ -34332,7 +34343,8 @@
           "marvelId": 14936,
           "slug": "new_x-men_2001_117",
           "digitalId": 3050,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/4/51153-9121-66995-1-new-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/4/51153-9121-66995-1-new-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:95319e76-7b7c-4b3c-b4e1-3c09a83186ea"
         },
         {
           "id": "morrison-new-x-men-118",
@@ -34519,7 +34531,8 @@
           "marvelId": 14953,
           "slug": "new_x-men_2001_134",
           "digitalId": 6582,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/1013/91617-9121-106499-1-new-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/1013/91617-9121-106499-1-new-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:c19e6b40-3e26-480d-b428-dc6513af49e4"
         },
         {
           "id": "morrison-new-x-men-135",
@@ -34530,7 +34543,8 @@
           "marvelId": 14954,
           "slug": "new_x-men_2001_135",
           "digitalId": 6583,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6816/163325-9121-112536-1-new-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6816/163325-9121-112536-1-new-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:70444125-c59a-4524-8a44-a789dd28adf5"
         },
         {
           "id": "morrison-new-x-men-136",
@@ -34541,7 +34555,8 @@
           "marvelId": 14955,
           "slug": "new_x-men_2001_136",
           "digitalId": 6584,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/191535-9121-114332-1-new-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/191535-9121-114332-1-new-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:353578c3-4920-4d4a-8956-a7aff914ce07"
         },
         {
           "id": "morrison-new-x-men-137",
@@ -34552,7 +34567,8 @@
           "marvelId": 14956,
           "slug": "new_x-men_2001_137",
           "digitalId": 6585,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/191536-9121-114333-1-new-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/191536-9121-114333-1-new-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:eaf502c0-60d8-49da-a2e7-ce4f7b82c8bd"
         },
         {
           "id": "morrison-new-x-men-138",
@@ -34563,7 +34579,8 @@
           "marvelId": 14957,
           "slug": "new_x-men_2001_138",
           "digitalId": 6586,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/191537-9121-114334-1-new-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/191537-9121-114334-1-new-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:e2b13cbe-766b-4f02-beed-ce4ef287e9fb"
         },
         {
           "id": "morrison-new-x-men-139",
@@ -34574,7 +34591,8 @@
           "marvelId": 14958,
           "slug": "new_x-men_2001_139",
           "digitalId": 6587,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/191544-9121-114335-1-new-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/191544-9121-114335-1-new-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:ddf8befd-b717-4310-9d56-d35782834108"
         },
         {
           "id": "morrison-new-x-men-140",
@@ -34585,7 +34603,8 @@
           "marvelId": 14959,
           "slug": "new_x-men_2001_140",
           "digitalId": 6588,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/191580-9121-114336-1-new-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/191580-9121-114336-1-new-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:83b48aa1-8919-4ffb-a20b-346fa047dcc9"
         },
         {
           "id": "morrison-new-x-men-141",
@@ -34596,7 +34615,8 @@
           "marvelId": 14960,
           "slug": "new_x-men_2001_141",
           "digitalId": 6589,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/193068-9121-114456-1-new-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/193068-9121-114456-1-new-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:df7e30b1-d7f4-4db6-b9da-f5b00733951a"
         },
         {
           "id": "morrison-new-x-men-142",
@@ -34607,7 +34627,8 @@
           "marvelId": 14961,
           "slug": "new_x-men_2001_142",
           "digitalId": 3053,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/193071-9121-114457-1-new-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/193071-9121-114457-1-new-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:4839f1b2-05c7-47e2-a8ef-987650d7511f"
         },
         {
           "id": "morrison-new-x-men-143",
@@ -34618,7 +34639,8 @@
           "marvelId": 14962,
           "slug": "new_x-men_2001_143",
           "digitalId": 6590,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/193037-9121-114449-1-new-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/193037-9121-114449-1-new-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:2153be59-8359-4fce-ac37-312eec5ba8d5"
         },
         {
           "id": "morrison-new-x-men-144",
@@ -34629,7 +34651,8 @@
           "marvelId": 14963,
           "slug": "new_x-men_2001_144",
           "digitalId": 6591,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/193038-9121-114450-1-new-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/193038-9121-114450-1-new-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:34f92893-88ac-4995-b180-2b9467dc73b1"
         },
         {
           "id": "morrison-new-x-men-145",
@@ -34640,7 +34663,8 @@
           "marvelId": 14964,
           "slug": "new_x-men_2001_145",
           "digitalId": 6592,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/193039-9121-114453-1-new-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/193039-9121-114453-1-new-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:83031fd3-d081-4071-b4c4-0cb28a0df108"
         },
         {
           "id": "morrison-new-x-men-146",
@@ -34651,7 +34675,8 @@
           "marvelId": 14965,
           "slug": "new_x-men_2001_146",
           "digitalId": 3054,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/193040-9121-114451-1-new-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/193040-9121-114451-1-new-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:0fc0963b-fded-448d-9503-d64ad51506ce"
         },
         {
           "id": "morrison-new-x-men-147",
@@ -34662,7 +34687,8 @@
           "marvelId": 125,
           "slug": "new_x-men_2001_147",
           "digitalId": 13875,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/193042-9121-114452-1-new-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/193042-9121-114452-1-new-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:4ec924eb-ca82-4cbf-b215-289f669dc665"
         },
         {
           "id": "morrison-new-x-men-148",
@@ -34673,7 +34699,8 @@
           "marvelId": 136,
           "slug": "new_x-men_2001_148",
           "digitalId": 6593,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/193045-9121-114454-1-new-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/193045-9121-114454-1-new-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:1e05d953-6d80-47ac-9165-7c14281c7f30"
         },
         {
           "id": "morrison-new-x-men-149",
@@ -34684,7 +34711,8 @@
           "marvelId": 124,
           "slug": "new_x-men_2001_149",
           "digitalId": 6594,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/193073-9121-114458-1-new-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/193073-9121-114458-1-new-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:943a4939-6e10-4a4f-a904-d0c1feb90cee"
         },
         {
           "id": "morrison-new-x-men-150",
@@ -34695,7 +34723,8 @@
           "marvelId": 123,
           "slug": "new_x-men_2001_150",
           "digitalId": 6595,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/193077-9121-114459-1-new-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/193077-9121-114459-1-new-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:a1de156d-0b0e-45d1-87c0-7f78bd946b75"
         },
         {
           "id": "morrison-new-x-men-151",
@@ -34706,7 +34735,8 @@
           "marvelId": 122,
           "slug": "new_x-men_2001_151",
           "digitalId": 2294,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/5/56044/1630139-x_men__1991__151.jpeg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/5/56044/1630139-x_men__1991__151.jpeg",
+          "drn": "drn:src:marvel:unison::prod:f2a590a0-c7f4-4d5e-9203-1ddc17a6cd9a"
         },
         {
           "id": "morrison-new-x-men-152",
@@ -34717,7 +34747,8 @@
           "marvelId": 121,
           "slug": "new_x-men_2001_152",
           "digitalId": 6596,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/5/56044/1630138-x_men__1991__152.jpeg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/5/56044/1630138-x_men__1991__152.jpeg",
+          "drn": "drn:src:marvel:unison::prod:1436d614-21a9-493a-aaf4-31c8f01a53a6"
         },
         {
           "id": "morrison-new-x-men-153",
@@ -34728,7 +34759,8 @@
           "marvelId": 120,
           "slug": "new_x-men_2001_153",
           "digitalId": 6597,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/5/56044/1630132-x_men__1991__153.jpeg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/5/56044/1630132-x_men__1991__153.jpeg",
+          "drn": "drn:src:marvel:unison::prod:30b49260-b10c-4db6-9947-8edba39d930c"
         },
         {
           "id": "morrison-new-x-men-154",
@@ -34739,7 +34771,8 @@
           "marvelId": 420,
           "slug": "new_x-men_2001_154",
           "digitalId": 6598,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/5/56044/1630144-x_men__1991__154_signed_marc_silvestri.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/5/56044/1630144-x_men__1991__154_signed_marc_silvestri.jpg",
+          "drn": "drn:src:marvel:unison::prod:89311b12-ffff-4bdb-a2ff-aa7e6fbddfbd"
         }
       ],
       "cover": "https://comicvine.gamespot.com/a/uploads/original/0/4/51150-9121-66992-1-new-x-men.jpg"
@@ -34769,7 +34802,8 @@
           "marvelId": 660,
           "slug": "astonishing_x-men_2004_1",
           "digitalId": 93,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/4/57585-10746-90580-1-astonishing-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/4/57585-10746-90580-1-astonishing-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:7a39a60b-17e4-4c8a-a264-9275a5059eeb"
         },
         {
           "id": "whedon-astonishing-x-men-2",
@@ -34956,7 +34990,8 @@
           "marvelId": 5188,
           "slug": "astonishing_x-men_2004_18",
           "digitalId": 5103,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/2292/93608-10746-106130-1-astonishing-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/2292/93608-10746-106130-1-astonishing-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:304ff762-b480-4597-a7be-0feb210f8a9c"
         },
         {
           "id": "whedon-astonishing-x-men-19",
@@ -34967,7 +35002,8 @@
           "marvelId": 5417,
           "slug": "astonishing_x-men_2004_19",
           "digitalId": 5104,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/1756/96017-10746-106105-2-astonishing-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/1756/96017-10746-106105-2-astonishing-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:93f9c379-eb4f-4e4e-ae50-b88c80114657"
         },
         {
           "id": "whedon-astonishing-x-men-20",
@@ -34978,7 +35014,8 @@
           "marvelId": 5674,
           "slug": "astonishing_x-men_2004_20",
           "digitalId": 7986,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/40/91427-10746-106469-1-astonishing-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/40/91427-10746-106469-1-astonishing-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:ea9d7892-0aae-4920-a1b3-5b060c332414"
         },
         {
           "id": "whedon-astonishing-x-men-21",
@@ -34989,7 +35026,8 @@
           "marvelId": 6120,
           "slug": "astonishing_x-men_2004_21",
           "digitalId": 7989,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/40/114123-10746-108923-1-astonishing-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/40/114123-10746-108923-1-astonishing-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:1344b577-71d5-46ad-9349-dba8c50272d0"
         },
         {
           "id": "whedon-astonishing-x-men-22",
@@ -35000,7 +35038,8 @@
           "marvelId": 6309,
           "slug": "astonishing_x-men_2004_22",
           "digitalId": 7991,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/787/176655-10746-113737-2-astonishing-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/787/176655-10746-113737-2-astonishing-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:0f305d9b-d3e7-458f-baeb-d2068c970892"
         },
         {
           "id": "whedon-astonishing-x-men-23",
@@ -35011,7 +35050,8 @@
           "marvelId": 16119,
           "slug": "astonishing_x-men_2004_23",
           "digitalId": 7993,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/11/110017/2770762-astonishing_x_men__023_000a.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/11/110017/2770762-astonishing_x_men__023_000a.jpg",
+          "drn": "drn:src:marvel:unison::prod:0c8cad0e-4610-458d-9f69-022b7a56f84a"
         },
         {
           "id": "whedon-astonishing-x-men-24",
@@ -35022,7 +35062,8 @@
           "marvelId": 17353,
           "slug": "astonishing_x-men_2004_24",
           "digitalId": 7994,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/40/287324-10746-121887-1-astonishing-x-men.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/40/287324-10746-121887-1-astonishing-x-men.jpg",
+          "drn": "drn:src:marvel:unison::prod:4781d61f-29ba-4192-8d06-8708875b6239"
         }
       ],
       "cover": "https://comicvine.gamespot.com/a/uploads/original/0/4/57585-10746-90580-1-astonishing-x-men.jpg"
@@ -35239,7 +35280,8 @@
           "marvelId": 17206,
           "slug": "uncanny_x-men_1963_492",
           "digitalId": 8739,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/11/110017/2769361-uncanny_x_men__492_000a.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/11/110017/2769361-uncanny_x_men__492_000a.jpg",
+          "drn": "drn:src:marvel:unison::prod:08a68824-b613-4803-96dd-17b41a8c491b"
         },
         {
           "id": "brubaker-uncanny-x-men-493",
@@ -35260,7 +35302,8 @@
           "marvelId": 17576,
           "slug": "uncanny_x-men_1963_494",
           "digitalId": 11737,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/9241/547463-0006.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/9241/547463-0006.jpg",
+          "drn": "drn:src:marvel:unison::prod:4ca8e002-06b6-403c-8b1c-2d717b326fe4"
         },
         {
           "id": "brubaker-uncanny-x-men-495",
@@ -35345,7 +35388,8 @@
           "marvelId": 33565,
           "slug": "uncanny_x-men_1963_500",
           "digitalId": 14212,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/9241/792146-001.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/9241/792146-001.jpg",
+          "drn": "drn:src:marvel:unison::prod:7beccdde-87d3-4f98-b27f-ce7b28193744"
         },
         {
           "id": "fraction-uncanny-x-men-501",
@@ -35477,7 +35521,8 @@
           "marvelId": 26965,
           "slug": "uncanny_x-men_1963_512",
           "digitalId": 12715,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/1/14859/854396-uxm_512_0000a.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/1/14859/854396-uxm_512_0000a.jpg",
+          "drn": "drn:src:marvel:unison::prod:eb489dfa-2e61-494f-b234-d5fe4eb54c8c"
         },
         {
           "id": "fraction-uncanny-x-men-513",
@@ -35488,7 +35533,8 @@
           "marvelId": 26966,
           "slug": "uncanny_x-men_1963_513",
           "digitalId": 12766,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/3755867-513.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/3755867-513.jpg",
+          "drn": "drn:src:marvel:unison::prod:2dc505a2-a6d2-484d-a3e8-3281e1f24a06"
         },
         {
           "id": "fraction-uncanny-x-men-514",
@@ -35499,7 +35545,8 @@
           "marvelId": 26967,
           "slug": "uncanny_x-men_1963_514",
           "digitalId": 16919,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/2204353-514a.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/2204353-514a.jpg",
+          "drn": "drn:src:marvel:unison::prod:8b968e76-42b4-4ca2-a1c7-c9da2aeed72e"
         },
         {
           "id": "fraction-uncanny-x-men-515",
@@ -35510,7 +35557,8 @@
           "marvelId": 26968,
           "slug": "uncanny_x-men_1963_515",
           "digitalId": 13478,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/2204354-515.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/2204354-515.jpg",
+          "drn": "drn:src:marvel:unison::prod:f6a91050-6709-4e73-b0c9-50f87094ee49"
         },
         {
           "id": "fraction-uncanny-x-men-516",
@@ -35521,7 +35569,8 @@
           "marvelId": 26969,
           "slug": "uncanny_x-men_1963_516",
           "digitalId": 17070,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/5344/990751-un.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/5344/990751-un.jpg",
+          "drn": "drn:src:marvel:unison::prod:b5cc021d-c650-4e97-ad83-82ca98e1053a"
         },
         {
           "id": "fraction-uncanny-x-men-517",
@@ -35532,7 +35581,8 @@
           "marvelId": 26970,
           "slug": "uncanny_x-men_1963_517",
           "digitalId": 17325,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/5344/1038474-un.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/5344/1038474-un.jpg",
+          "drn": "drn:src:marvel:unison::prod:62d6b4f6-8b00-4cc5-8698-a7cc91cb3df8"
         },
         {
           "id": "fraction-uncanny-x-men-518",
@@ -35543,7 +35593,8 @@
           "marvelId": 26971,
           "slug": "uncanny_x-men_1963_518",
           "digitalId": 18508,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/2204363-518.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/2204363-518.jpg",
+          "drn": "drn:src:marvel:unison::prod:f63402e0-6651-4c28-82d0-020f1580b642"
         },
         {
           "id": "fraction-uncanny-x-men-519",
@@ -35554,7 +35605,8 @@
           "marvelId": 26972,
           "slug": "uncanny_x-men_1963_519",
           "digitalId": 18507,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/5344/1070395-un.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/5344/1070395-un.jpg",
+          "drn": "drn:src:marvel:unison::prod:4acd853f-ba17-47b9-b1ee-b6272e6404cd"
         },
         {
           "id": "fraction-uncanny-x-men-520",
@@ -35565,7 +35617,8 @@
           "marvelId": 26973,
           "slug": "uncanny_x-men_1963_520",
           "digitalId": 18123,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/5344/1098193-unc.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/5344/1098193-unc.jpg",
+          "drn": "drn:src:marvel:unison::prod:fe4bc491-fe12-4e29-965b-12bed667d55e"
         },
         {
           "id": "fraction-uncanny-x-men-521",
@@ -35576,7 +35629,8 @@
           "marvelId": 26974,
           "slug": "uncanny_x-men_1963_521",
           "digitalId": 13903,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/2204364-521a.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/2204364-521a.jpg",
+          "drn": "drn:src:marvel:unison::prod:e2f56f0b-f8e0-4209-b5f6-4a71d541f680"
         },
         {
           "id": "fraction-uncanny-x-men-522",
@@ -35587,7 +35641,8 @@
           "marvelId": 30619,
           "slug": "uncanny_x-men_1963_522",
           "digitalId": 14149,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/2204365-522a.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/2204365-522a.jpg",
+          "drn": "drn:src:marvel:unison::prod:6d475ee0-f470-4539-bdca-68d3ee75cf80"
         },
         {
           "id": "fraction-uncanny-x-men-523",
@@ -35598,7 +35653,8 @@
           "marvelId": 32564,
           "slug": "uncanny_x-men_1963_523",
           "digitalId": 14265,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/5344/1178113-uncanny.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/5344/1178113-uncanny.jpg",
+          "drn": "drn:src:marvel:unison::prod:1af6ae15-241c-4c7a-aa5a-4894b5636436"
         },
         {
           "id": "fraction-uncanny-x-men-524",
@@ -35609,7 +35665,8 @@
           "marvelId": 30621,
           "slug": "uncanny_x-men_1963_524",
           "digitalId": 14490,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/5344/1216797-uncanny_524.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/5344/1216797-uncanny_524.jpg",
+          "drn": "drn:src:marvel:unison::prod:2a2e8d29-1434-4de8-9539-8c8bccd4882e"
         },
         {
           "id": "fraction-uncanny-x-men-525",
@@ -35620,7 +35677,8 @@
           "marvelId": 30622,
           "slug": "uncanny_x-men_1963_525",
           "digitalId": 14902,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/2204367-525.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/2204367-525.jpg",
+          "drn": "drn:src:marvel:unison::prod:123b0f62-5d7e-423e-8489-a515c8225e06"
         },
         {
           "id": "fraction-uncanny-x-men-526",
@@ -35631,7 +35689,8 @@
           "marvelId": 30623,
           "slug": "uncanny_x-men_1963_526",
           "digitalId": 15413,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/1316214-uncanny526c.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/1316214-uncanny526c.jpg",
+          "drn": "drn:src:marvel:unison::prod:64f107dc-ea56-4c0a-b94c-e9f3b6c03a11"
         },
         {
           "id": "fraction-uncanny-x-men-527",
@@ -35642,7 +35701,8 @@
           "marvelId": 30624,
           "slug": "uncanny_x-men_1963_527",
           "digitalId": 15754,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67093/1344399-uncx527.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67093/1344399-uncx527.jpg",
+          "drn": "drn:src:marvel:unison::prod:b8b5f113-6d98-4b92-b755-78b41a4f0b4e"
         },
         {
           "id": "fraction-uncanny-x-men-528",
@@ -35653,7 +35713,8 @@
           "marvelId": 30625,
           "slug": "uncanny_x-men_1963_528",
           "digitalId": 16184,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/1411776-uncanny528c.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/1411776-uncanny528c.jpg",
+          "drn": "drn:src:marvel:unison::prod:2d1a6063-efc7-4769-a5b2-15c76de28b41"
         },
         {
           "id": "fraction-uncanny-x-men-529",
@@ -35664,7 +35725,8 @@
           "marvelId": 30626,
           "slug": "uncanny_x-men_1963_529",
           "digitalId": 17048,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/2204369-529.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/2204369-529.jpg",
+          "drn": "drn:src:marvel:unison::prod:36ea2d83-86e8-46ab-836c-3f5a519444ea"
         },
         {
           "id": "fraction-uncanny-x-men-530",
@@ -35675,7 +35737,8 @@
           "marvelId": 30627,
           "slug": "uncanny_x-men_1963_530",
           "digitalId": 17927,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/1526445-uncannyxmen530c.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/6754/1526445-uncannyxmen530c.jpg",
+          "drn": "drn:src:marvel:unison::prod:652b7546-52b8-460d-b715-9df84858912e"
         },
         {
           "id": "fraction-uncanny-x-men-531",
@@ -35686,7 +35749,8 @@
           "marvelId": 30628,
           "slug": "uncanny_x-men_1963_531",
           "digitalId": 14757,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/5344/1576302-uncanny.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/5344/1576302-uncanny.jpg",
+          "drn": "drn:src:marvel:unison::prod:0e90e072-168d-4903-a64a-d7a21fa5616c"
         },
         {
           "id": "fraction-uncanny-x-men-532",
@@ -35697,7 +35761,8 @@
           "marvelId": 36329,
           "slug": "uncanny_x-men_1963_532",
           "digitalId": 19008,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/2204370-532.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/2204370-532.jpg",
+          "drn": "drn:src:marvel:unison::prod:a5181fb4-5f42-40ca-bd31-a63d1fe4b9a2"
         },
         {
           "id": "fraction-uncanny-x-men-533",
@@ -35708,7 +35773,8 @@
           "marvelId": 36324,
           "slug": "uncanny_x-men_1963_533",
           "digitalId": 19732,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/3415598-533.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/3415598-533.jpg",
+          "drn": "drn:src:marvel:unison::prod:a4c47502-af5d-47f3-8bae-1da2ddc6fd2a"
         },
         {
           "id": "fraction-uncanny-x-men-534",
@@ -35719,7 +35785,8 @@
           "marvelId": 36323,
           "slug": "uncanny_x-men_1963_534",
           "digitalId": 20140,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/8/87073/1734702-uncannyx_men534.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/8/87073/1734702-uncannyx_men534.jpg",
+          "drn": "drn:src:marvel:unison::prod:ce8e9e58-93e5-498f-bcd6-9752f617ee2e"
         },
         {
           "id": "fraction-uncanny-x-men-535",
@@ -35750,7 +35817,8 @@
           "marvelId": 36328,
           "slug": "uncanny_x-men_1963_537",
           "digitalId": 21214,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/5344/1825154-uncanny.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/5344/1825154-uncanny.jpg",
+          "drn": "drn:src:marvel:unison::prod:a310e137-4673-4e2c-9884-cefa8fadc249"
         },
         {
           "id": "fraction-uncanny-x-men-538",
@@ -35771,7 +35839,8 @@
           "marvelId": 36325,
           "slug": "uncanny_x-men_1963_539",
           "digitalId": 21996,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/9/96747/1883027-prv9048_cov.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/9/96747/1883027-prv9048_cov.jpg",
+          "drn": "drn:src:marvel:unison::prod:80002f98-9be9-4e05-9ba8-816f9e802b23"
         },
         {
           "id": "fraction-uncanny-x-men-540",
@@ -35782,7 +35851,8 @@
           "marvelId": 36320,
           "slug": "uncanny_x-men_1963_540",
           "digitalId": 22438,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/3/30497/1891257-u540.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/3/30497/1891257-u540.jpg",
+          "drn": "drn:src:marvel:unison::prod:b2a51f27-38c9-4a6b-a1c6-1cb8f2e86031"
         },
         {
           "id": "fraction-uncanny-x-men-541",
@@ -35793,7 +35863,8 @@
           "marvelId": 36330,
           "slug": "uncanny_x-men_1963_541",
           "digitalId": 22695,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/7/79529/1916991-image0001.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/7/79529/1916991-image0001.jpg",
+          "drn": "drn:src:marvel:unison::prod:a96b10c1-cae5-4f52-a6a1-babc1309f139"
         },
         {
           "id": "fraction-uncanny-x-men-542",
@@ -35804,7 +35875,8 @@
           "marvelId": 36322,
           "slug": "uncanny_x-men_1963_542",
           "digitalId": 23468,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/5/57023/1966445-prv9486_cov.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/5/57023/1966445-prv9486_cov.jpg",
+          "drn": "drn:src:marvel:unison::prod:b77d11fb-6ace-4522-bb4d-8d3e0baad07b"
         },
         {
           "id": "fraction-uncanny-x-men-543",
@@ -35815,7 +35887,8 @@
           "marvelId": 36327,
           "slug": "uncanny_x-men_1963_543",
           "digitalId": 23927,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/2034546-543.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/2034546-543.jpg",
+          "drn": "drn:src:marvel:unison::prod:56ace093-1a55-4ffb-8041-61e0e82b77f3"
         },
         {
           "id": "fraction-uncanny-x-men-544",
@@ -35826,7 +35899,8 @@
           "marvelId": 37942,
           "slug": "uncanny_x-men_1963_544",
           "digitalId": 24364,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/2089140-544.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/2089140-544.jpg",
+          "drn": "drn:src:marvel:unison::prod:d130cc36-3d63-4ed9-95c6-617a1cfe1ccc"
         }
       ],
       "cover": "https://comicvine.gamespot.com/a/uploads/original/0/9241/792146-001.jpg"
@@ -35856,7 +35930,8 @@
           "marvelId": 40166,
           "slug": "uncanny_x-men_2011_1",
           "digitalId": 24457,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/40/2065801-uncx2011001_dc11_lr.png"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/0/40/2065801-uncx2011001_dc11_lr.png",
+          "drn": "drn:src:marvel:unison::prod:23edd964-f5ba-4374-bad1-a078e1e56060"
         },
         {
           "id": "gillen-uncanny-x-men-2",
@@ -35955,7 +36030,8 @@
           "marvelId": 40163,
           "slug": "uncanny_x-men_2011_10",
           "digitalId": 26079,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/11/110017/2288361-www.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/11/110017/2288361-www.jpg",
+          "drn": "drn:src:marvel:unison::prod:3df225f9-0463-4bbd-824a-fdff25d80cee"
         },
         {
           "id": "gillen-uncanny-x-men-11",
@@ -35966,7 +36042,8 @@
           "marvelId": 40160,
           "slug": "uncanny_x-men_2011_11",
           "digitalId": 26208,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/11/110017/2311602-www.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/11/110017/2311602-www.jpg",
+          "drn": "drn:src:marvel:unison::prod:07afb35d-26b1-4202-a096-7a730a13db57"
         },
         {
           "id": "gillen-uncanny-x-men-12",
@@ -35977,7 +36054,8 @@
           "marvelId": 40155,
           "slug": "uncanny_x-men_2011_12",
           "digitalId": 26429,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/9/96747/2347602-uncannyxmen12c.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/9/96747/2347602-uncannyxmen12c.jpg",
+          "drn": "drn:src:marvel:unison::prod:08a35e1d-74f2-46a7-8dcf-a01b26356cc1"
         },
         {
           "id": "gillen-uncanny-x-men-13",
@@ -35988,7 +36066,8 @@
           "marvelId": 40152,
           "slug": "uncanny_x-men_2011_13",
           "digitalId": 26666,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/3549328-13.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/3549328-13.jpg",
+          "drn": "drn:src:marvel:unison::prod:d178be0a-7efe-4f62-87f5-a19dd05b9c3f"
         },
         {
           "id": "gillen-uncanny-x-men-14",
@@ -35999,7 +36078,8 @@
           "marvelId": 40153,
           "slug": "uncanny_x-men_2011_14",
           "digitalId": 26622,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/7/71975/2415478-prev_img.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/7/71975/2415478-prev_img.jpg",
+          "drn": "drn:src:marvel:unison::prod:d9da41e8-4089-4769-8943-6db00ac398e5"
         },
         {
           "id": "gillen-uncanny-x-men-15",
@@ -36010,7 +36090,8 @@
           "marvelId": 40151,
           "slug": "uncanny_x-men_2011_15",
           "digitalId": 27093,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/7/71975/2445077-prev_img.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/7/71975/2445077-prev_img.jpg",
+          "drn": "drn:src:marvel:unison::prod:5d7fc6f8-1645-4e98-8547-4181b1486d01"
         },
         {
           "id": "gillen-uncanny-x-men-16",
@@ -36407,7 +36488,8 @@
           "marvelId": 43462,
           "slug": "all-new_x-men_2012_1",
           "digitalId": 28002,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/3/31666/2700025-prv14172_cov.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/3/31666/2700025-prv14172_cov.jpg",
+          "drn": "drn:src:marvel:unison::prod:1d75fb65-5d59-4800-aa18-0b602a2bd097"
         },
         {
           "id": "bendis-all-new-x-men-2",
@@ -36572,7 +36654,8 @@
           "marvelId": 43481,
           "slug": "all-new_x-men_2012_16",
           "digitalId": 31351,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/3286180-16a.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/3286180-16a.jpg",
+          "drn": "drn:src:marvel:unison::prod:98e95a7e-5987-4187-b0f5-85fcdb182176"
         },
         {
           "id": "bendis-all-new-x-men-17",
@@ -36583,7 +36666,8 @@
           "marvelId": 43482,
           "slug": "all-new_x-men_2012_17",
           "digitalId": 31573,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/3345294-17a.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/3345294-17a.jpg",
+          "drn": "drn:src:marvel:unison::prod:23fc4cee-4609-4780-99cf-77950c70f3d3"
         },
         {
           "id": "bendis-all-new-x-men-18",
@@ -36877,7 +36961,8 @@
           "marvelId": 46653,
           "slug": "uncanny_x-men_2013_1",
           "digitalId": 28798,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/3504551-01a.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/3504551-01a.jpg",
+          "drn": "drn:src:marvel:unison::prod:fc6c5a56-64ce-4e8e-8323-4d21bd97320b"
         },
         {
           "id": "bendis-uncanny-x-men-vol3-2",
@@ -36998,7 +37083,8 @@
           "marvelId": 46677,
           "slug": "uncanny_x-men_2013_12",
           "digitalId": 31520,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/3316884-12a.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/3316884-12a.jpg",
+          "drn": "drn:src:marvel:unison::prod:447454b8-b94e-4a32-a649-67f127adc6f6"
         },
         {
           "id": "bendis-uncanny-x-men-vol3-13",
@@ -37009,7 +37095,8 @@
           "marvelId": 48095,
           "slug": "uncanny_x-men_2013_13",
           "digitalId": 31734,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/3377649-13a.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/3377649-13a.jpg",
+          "drn": "drn:src:marvel:unison::prod:6d55bb55-ed2e-46c4-93bf-2cbae397233e"
         },
         {
           "id": "bendis-uncanny-x-men-vol3-14",
@@ -37152,7 +37239,8 @@
           "marvelId": 48684,
           "slug": "uncanny_x-men_2013_26",
           "digitalId": 34788,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/4103494-26.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/4103494-26.jpg",
+          "drn": "drn:src:marvel:unison::prod:ce6246c0-7a91-4037-8926-aeea0d2785be"
         },
         {
           "id": "bendis-uncanny-x-men-vol3-27",
@@ -37163,7 +37251,8 @@
           "marvelId": 50359,
           "slug": "uncanny_x-men_2013_27",
           "digitalId": 34891,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/4158660-27.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/4158660-27.jpg",
+          "drn": "drn:src:marvel:unison::prod:24b45b6b-d1e7-4545-92f6-38125702fd61"
         },
         {
           "id": "bendis-uncanny-x-men-vol3-28",
@@ -37174,7 +37263,8 @@
           "marvelId": 50360,
           "slug": "uncanny_x-men_2013_28",
           "digitalId": 35361,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/4226489-28.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/4226489-28.jpg",
+          "drn": "drn:src:marvel:unison::prod:46837317-70a6-4f1e-84ec-f85e470ce3f5"
         },
         {
           "id": "bendis-uncanny-x-men-vol3-29",
@@ -37185,7 +37275,8 @@
           "marvelId": 50361,
           "slug": "uncanny_x-men_2013_29",
           "digitalId": 35803,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/4289974-29.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/4289974-29.jpg",
+          "drn": "drn:src:marvel:unison::prod:9f56c7b6-9ef6-4692-963a-bf621b8710b1"
         },
         {
           "id": "bendis-uncanny-x-men-vol3-30",
@@ -37196,7 +37287,8 @@
           "marvelId": 52874,
           "slug": "uncanny_x-men_2013_30",
           "digitalId": 36175,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/4354934-30.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/4354934-30.jpg",
+          "drn": "drn:src:marvel:unison::prod:e7adb6ad-dc8f-453b-befb-5b02e265832a"
         },
         {
           "id": "bendis-uncanny-x-men-vol3-31",
@@ -37207,7 +37299,8 @@
           "marvelId": 52876,
           "slug": "uncanny_x-men_2013_31",
           "digitalId": 36428,
-          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/4398355-31.jpg"
+          "cover": "https://comicvine.gamespot.com/a/uploads/original/6/67663/4398355-31.jpg",
+          "drn": "drn:src:marvel:unison::prod:157391ce-210b-4d5b-867f-0549ec0335fe"
         },
         {
           "id": "bendis-uncanny-x-men-vol3-32",

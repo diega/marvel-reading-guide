@@ -7,7 +7,17 @@
 
 export function isMobile(): boolean {
   if (typeof navigator === 'undefined') return false;
-  return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  const ua = navigator.userAgent;
+  // Direct UA matches cover Android + iPhone/iPod + iPad pre-iPadOS13.
+  if (/Android|iPhone|iPod/.test(ua)) return true;
+  if (/iPad/.test(ua)) return true;
+  // iPadOS 13+ reports as desktop Macintosh by default. The only reliable
+  // fingerprint is "Macintosh + touch input" — desktop Macs have 0 touch
+  // points, iPads report ≥5.
+  if (/Macintosh/.test(ua) && typeof navigator.maxTouchPoints === 'number' && navigator.maxTouchPoints > 1) {
+    return true;
+  }
+  return false;
 }
 
 /**

@@ -62,6 +62,7 @@ CV_API_KEY=xxx npm run enrich:comicvine
 |--------|----------|--------|--------------|
 | `enrich-from-sitemap.ts` | `marvelId`, `slug` (from `marvel.com/sitemap-comics-{0,1}.xml`), `digitalId` (from each issue page), `drn` + `cover` (from `bifrost.marvel.com/unison/legacy?digitalId=N`) | marvel.com + bifrost | Yes — marvel.com rate-limits by IP. Concurrency=2, 1.5–3s delay, autosave every 25 hits, User-Agent rotation on 403. Use `--only-sitemap` for a fast pass that only fills slug/marvelId. |
 | `enrich-from-comicvine.ts` | `cover` (fallback for issues the native enricher missed) | comicvine.gamespot.com | 200 req/hour per endpoint. Batches by series volume to minimise calls. Requires `CV_API_KEY` env. |
+| `dedup-enrichment.ts` | Propagates `drn` / `digitalId` / `slug` / `cover` across entries that share a `marvelId` across different guides. The same issue can appear in multiple events (e.g. New X-Men #114 is in both the Morrison run and the Cyclops spine); if one copy got enriched and the other didn't, this closes the gap. Runs unconditionally at the end of the pipeline. Cheap. | (no network) | No. |
 
 ## Data control files
 

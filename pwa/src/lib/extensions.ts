@@ -178,4 +178,13 @@ export type ResolvedExtensions = Required<{
 export interface ExtensionsHostContext {
   /** Flattened list of every issue across every event in the dataset. */
   issues: Issue[];
+  /**
+   * Host i18n hooks. Overlays maintain their own string dictionaries (for
+   * strings specific to the overlay), but can key off the host's current
+   * language via `useLang()` so the picker in Account drives overlay
+   * strings too. The hook re-renders the caller on language change.
+   */
+  i18n: {
+    useLang(): 'es' | 'en';
+  };
 }

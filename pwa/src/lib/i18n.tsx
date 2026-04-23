@@ -165,3 +165,15 @@ export function useT() {
   if (!ctx) throw new Error('useT outside I18nProvider');
   return ctx;
 }
+
+/**
+ * Narrower alternative for consumers that only need the current language.
+ * Re-renders on lang change just like `useT`. Exposed for overlays, which
+ * can maintain their own string dictionaries but key off the same lang the
+ * user picked in Account.
+ */
+export function useLang(): Lang {
+  const ctx = useContext(Ctx);
+  if (!ctx) throw new Error('useLang outside I18nProvider');
+  return ctx.lang;
+}
