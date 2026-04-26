@@ -31,7 +31,9 @@ jobs:
           persist-credentials: false
 
       - name: Run Scorecard
-        uses: ossf/scorecard-action@v2
+        # ossf/scorecard-action doesn't publish a floating major tag; pin
+        # to the latest exact release. Dependabot keeps this current.
+        uses: ossf/scorecard-action@v2.4.3
         with:
           results_file: results.sarif
           results_format: sarif
