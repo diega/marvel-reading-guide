@@ -1,0 +1,42 @@
+# Dependabot config for the public reading-guide repo.
+#
+# Three ecosystems live in this repo:
+#   - pwa/         (the Vite + React PWA shipped to Pages)
+#   - scripts/     (the data pipeline: scrape → enrich → normalize)
+#   - .github/     (the workflows that build & deploy)
+#
+# Strategy: weekly schedule, conservative grouping. Major bumps land as their
+# own PR so review can read the migration notes; everything else groups into
+# a single PR per ecosystem to keep the noise low.
+
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /pwa
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    groups:
+      pwa-minor-and-patch:
+        update-types: [minor, patch]
+
+  - package-ecosystem: npm
+    directory: /scripts
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    groups:
+      scripts-minor-and-patch:
+        update-types: [minor, patch]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    groups:
+      actions-minor-and-patch:
+        update-types: [minor, patch]
