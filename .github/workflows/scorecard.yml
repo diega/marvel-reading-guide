@@ -38,6 +38,10 @@ jobs:
           results_file: results.sarif
           results_format: sarif
           publish_results: true
+          # Per-repo policy that silences a handful of checks that
+          # don't apply to this project's profile (solo OSS, no fuzzing,
+          # no SHA-pinning, etc). Rationale lives in the policy file.
+          policy_file: .github/scorecard-policy.yml
 
       # Keep a copy of the SARIF so it can be inspected from the Actions UI.
       - name: Upload SARIF as artifact

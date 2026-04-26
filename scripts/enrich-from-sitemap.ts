@@ -207,8 +207,14 @@ async function fetchDigitalId(marvelId: number, slug: string, attempt = 1): Prom
  * issue page to translate legacy digitalId → DRN metadata.
  */
 async function fetchBifrost(digitalId: number): Promise<{ drn: string | null; cover: string | null }> {
+  // `digitalId` originates from events.json, which lives in this repo, but
+  // CodeQL (js/file-access-to-http) flags the file→fetch flow as untrusted.
+  // Coerce to an integer at the call boundary so anything weird in the JSON
+  // can't smuggle URL components into the fetch.
+  const id = Number(digitalId);
+  if (!Number.isInteger(id) || id < 0) return { drn: null, cover: null };
   try {
-    const res = await fetch(`https://bifrost.marvel.com/unison/legacy?digitalId=${digitalId}`, {
+    const res = await fetch(`https://bifrost.marvel.com/unison/legacy?digitalId=${id}`, {
       headers: { 'User-Agent': 'Mozilla/5.0', Accept: 'application/json' },
     });
     if (!res.ok) return { drn: null, cover: null };

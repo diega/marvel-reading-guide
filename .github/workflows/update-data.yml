@@ -25,6 +25,11 @@ on:
           - enrich
           - comicvine
 
+# Top-level read-only — the `update` job narrows up to contents: write for
+# the events.json commit/push at the end.
+permissions:
+  contents: read
+
 jobs:
   update:
     runs-on: ubuntu-latest

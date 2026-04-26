@@ -112,7 +112,7 @@ const SOURCES: CbhSource[] = [
     summary: "Krakoan-era launch post-HoX/PoX: Dawn of X titles + X of Swords crossover.",
     url: 'https://www.comicbookherald.com/the-complete-marvel-reading-order-guide/jonathan-hickman-x-men-reading-order/',
     listHeading: /^issue by issue dawn of x/i,
-    endHeading: /^next:|reign of x|heroically support/i,
+    endHeading: /^(next:|reign of x|heroically support)/i,
     coreTitles: ['house of x', 'powers of x', 'x-men', 'new mutants', 'excalibur', 'fallen angels', 'marauders', 'x-force', 'x-factor', 'cable', 'hellions', 'giant-size', 'x of swords'],
   },
   {

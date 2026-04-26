@@ -27,10 +27,19 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,svg,png,webp,json,woff2}'],
         runtimeCaching: [
           {
-            urlPattern: ({ url }) =>
-              url.hostname === 'i.annihil.us' ||
-              url.hostname.endsWith('marvelfe.com') ||
-              url.hostname.includes('marvel.com'),
+            urlPattern: ({ url }) => {
+              const h = url.hostname;
+              // Anchor on apex + `.` so `evilmarvel.com.attacker.example`
+              // doesn't match. CodeQL flagged the previous `includes()` /
+              // unanchored `endsWith()` form (js/incomplete-url-substring-
+              // sanitization) — narrowing here keeps the SW cache scoped
+              // to the actual Marvel image hosts.
+              return (
+                h === 'i.annihil.us' ||
+                h === 'marvelfe.com' || h.endsWith('.marvelfe.com') ||
+                h === 'marvel.com'   || h.endsWith('.marvel.com')
+              );
+            },
             handler: 'CacheFirst',
             options: {
               cacheName: 'marvel-covers',

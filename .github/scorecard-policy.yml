@@ -1,0 +1,61 @@
+# OpenSSF Scorecard policy for this repo.
+#
+# By default Scorecard reports any check that scores below 10. Most checks
+# encode useful general advice, but a handful aren't actionable for this
+# project's profile. We pin them to `score: 0` (any score passes) so the
+# noise stops landing in the Security tab — *not* to silence real signal.
+#
+# Real signal we still want surfaced (omitted here, so default applies):
+#   · Branch-Protection      — clears when the rule is enabled in Settings
+#   · Dangerous-Workflow     — keep
+#   · Dependency-Update-Tool — keep, currently passing (Dependabot in tree)
+#   · License                — keep
+#   · SAST                   — keep (CodeQL workflow exists)
+#   · Security-Policy        — keep, currently passing (SECURITY.md exists)
+#   · Token-Permissions      — keep, fixed in workflows (top-level perms)
+#   · Vulnerabilities        — keep (Dependabot alerts cover npm advisories)
+#   · Webhooks               — keep
+#
+# `score: 0 / mode: enforce` means: report a passing check if the actual
+# scorecard score is ≥ 0. Since scores live in [0,10], every result passes,
+# so the SARIF entry never appears in the Security tab.
+
+version: 1.0
+policies:
+  # We deliberately float to action major tags (e.g. `actions/checkout@v6`)
+  # rather than pin to commit SHAs. Dependabot watches the major tags and
+  # opens PRs when they bump; SHA-pinning would push that work onto
+  # humans and break the auto-update loop. Decision documented in
+  # https://github.com/diega/marvel-reading-guide/blob/main/SECURITY.md
+  - name: Pinned-Dependencies
+    score: 0
+    mode: enforce
+
+  # Solo-maintainer project — every commit lands directly on `main`, no
+  # PR review pipeline. Forks that follow a different model can drop this
+  # exception.
+  - name: Code-Review
+    score: 0
+    mode: enforce
+
+  # Not a security-relevant codebase that benefits from fuzzing (a reading
+  # tracker for static comic metadata). No untrusted user input flows
+  # through anything fuzzable.
+  - name: Fuzzing
+    score: 0
+    mode: enforce
+
+  # Aspirational badge program; no plans to apply for it. Doesn't reflect
+  # actual security posture.
+  - name: CII-Best-Practices
+    score: 0
+    mode: enforce
+
+  # Repo was newly created when split out of a monorepo (April 2026). The
+  # Maintained heuristic correctly identifies the file age but misreads
+  # the cause. Will auto-resolve at the 90-day mark; pinned at 0 in the
+  # interim. Remove this entry after July 2026 once the heuristic is
+  # passing on its own.
+  - name: Maintained
+    score: 0
+    mode: enforce

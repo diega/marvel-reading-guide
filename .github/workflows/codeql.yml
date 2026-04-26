@@ -17,6 +17,11 @@ on:
   schedule:
     - cron: '0 4 * * 3'  # Wed 04:00 UTC
 
+# Top-level read-only permission. Each job below narrows up where
+# it needs more (e.g. security-events: write to upload SARIF).
+permissions:
+  contents: read
+
 jobs:
   analyze:
     runs-on: ubuntu-latest

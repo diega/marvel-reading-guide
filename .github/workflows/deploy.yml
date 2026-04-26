@@ -28,6 +28,10 @@ env:
   CF_PAGES_PROJECT: ${{ vars.CF_PAGES_PROJECT }}
   PWA_CUSTOM_DOMAIN: ${{ vars.PWA_CUSTOM_DOMAIN }}
 
+# Top-level read-only — each job narrows up to what it actually needs.
+permissions:
+  contents: read
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
