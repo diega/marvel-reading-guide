@@ -1,0 +1,45 @@
+name: CodeQL
+
+# Static analysis for the JS/TS sources. Catches the classes of bugs
+# Dependabot can't see — XSS, prototype pollution, injection, unsafe
+# deserialisation, etc. Results land in the repo's Security tab.
+#
+# Triggers:
+#   · push to main      — guards what's deployed
+#   · pull_request → main — gates contributions before merge
+#   · weekly cron       — re-runs against the latest CodeQL queries even
+#                         if nobody pushed (catches new advisories)
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 4 * * 3'  # Wed 04:00 UTC
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    permissions:
+      contents: read
+      security-events: write
+      packages: read
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v4
+        with:
+          languages: javascript-typescript
+          # `security-extended` adds higher-recall queries on top of the
+          # default suite — worth the extra ~1 min of analysis for a repo
+          # this small.
+          queries: security-extended
+
+      - name: Analyze
+        uses: github/codeql-action/analyze@v4
+        with:
+          category: "/language:javascript-typescript"

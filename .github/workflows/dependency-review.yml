@@ -1,0 +1,28 @@
+name: Dependency Review
+
+# Runs on every PR. Surfaces a diff of npm dep changes the PR introduces
+# and fails the check if any new dep carries a known high-severity
+# advisory. Complementary to Dependabot: Dependabot bumps what's already
+# installed, this gate stops new vulnerable deps from sneaking in.
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/dependency-review-action@v4
+        with:
+          # Block PRs that introduce a high or critical advisory. Moderate
+          # gets surfaced as a comment but doesn't fail the check —
+          # otherwise routine PRs grind to a halt over transitive noise.
+          fail-on-severity: high
+          comment-summary-in-pr: on-failure
