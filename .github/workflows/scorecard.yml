@@ -22,8 +22,6 @@ jobs:
     permissions:
       # Required to upload SARIF to the Security tab.
       security-events: write
-      # OIDC token for publishing scorecard results to the public registry.
-      id-token: write
 
     steps:
       - uses: actions/checkout@v6
@@ -37,7 +35,12 @@ jobs:
         with:
           results_file: results.sarif
           results_format: sarif
-          publish_results: true
+          # publish_results=true would push the score to the public OpenSSF
+          # Scorecard registry (and emit a badge), but enabling it locks the
+          # job to `uses:`-only steps for verification — which forbids the
+          # `jq` filter step below. We keep the SARIF flowing into Code
+          # Scanning instead; that's where the actionable signal lives.
+          publish_results: false
 
       # Drop checks whose findings don't apply to this repo's profile.
       # The action doesn't expose a `policy_file` input (we tried, it
