@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, type JSX } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllEvents } from '../lib/data';
 import { useT } from '../lib/i18n';
