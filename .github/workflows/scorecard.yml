@@ -63,16 +63,19 @@ jobs:
       #                             heuristic clears at 90 days. Re-enable
       #                             this entry as a test by removing it
       #                             from the array after July 2026.
-      #
-      # Branch-Protection deliberately stays in: real signal that clears
-      # once the rule is enabled in Settings.
+      #   BranchProtectionID      — Scorecard scores Tier-1 protection
+      #                             (force-push lock + deletion lock) at
+      #                             3/10, so the alert never clears below
+      #                             Tier-5 (PR-gated, ≥2 reviewers, etc),
+      #                             which doesn't fit a solo-maintainer
+      #                             workflow. We accept the trade.
       - name: Filter SARIF — drop checks that don't apply to this repo
         run: |
           jq '
             .runs[].results |= map(select(
               .ruleId as $r |
               ["PinnedDependenciesID","CodeReviewID","FuzzingID",
-               "CIIBestPracticesID","MaintainedID"]
+               "CIIBestPracticesID","MaintainedID","BranchProtectionID"]
               | index($r) | not
             ))
           ' results.sarif > filtered.sarif
