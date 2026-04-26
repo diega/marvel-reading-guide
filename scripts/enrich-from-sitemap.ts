@@ -179,7 +179,14 @@ const UA_POOL = [
 function sleep(ms: number): Promise<void> { return new Promise((r) => setTimeout(r, ms)); }
 
 async function fetchDigitalId(marvelId: number, slug: string, attempt = 1): Promise<number | null> {
-  const url = `https://www.marvel.com/comics/issue/${marvelId}/${slug}`;
+  // Both `marvelId` and `slug` originate from events.json; CodeQL
+  // (js/file-access-to-http) flags the file→URL flow as untrusted. Validate
+  // each at the call boundary so a stray `?` or `#` in the data can't
+  // smuggle URL components.
+  const id = Number(marvelId);
+  if (!Number.isInteger(id) || id < 0) return null;
+  if (!/^[a-z0-9_-]+$/i.test(slug)) return null;
+  const url = `https://www.marvel.com/comics/issue/${id}/${slug}`;
   const ua = UA_POOL[(attempt - 1) % UA_POOL.length];
   try {
     const res = await fetch(url, { headers: { 'User-Agent': ua, Accept: 'text/html' } });

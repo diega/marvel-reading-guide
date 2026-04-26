@@ -38,10 +38,42 @@ jobs:
           results_file: results.sarif
           results_format: sarif
           publish_results: true
-          # Per-repo policy that silences a handful of checks that
-          # don't apply to this project's profile (solo OSS, no fuzzing,
-          # no SHA-pinning, etc). Rationale lives in the policy file.
-          policy_file: .github/scorecard-policy.yml
+
+      # Drop checks whose findings don't apply to this repo's profile.
+      # The action doesn't expose a `policy_file` input (we tried, it
+      # logs `Unexpected input(s) 'policy_file'`), so we filter the SARIF
+      # ourselves before upload. Each ruleId removed below is a deliberate
+      # accept:
+      #
+      #   PinnedDependenciesID    — we float to action major tags so
+      #                             Dependabot can roll us forward; pinning
+      #                             to SHAs would freeze that loop.
+      #   CodeReviewID            — solo maintainer, every commit lands
+      #                             directly on main, no PR review pipeline.
+      #   FuzzingID               — static-metadata reading tracker; no
+      #                             untrusted user input flows anywhere
+      #                             worth fuzzing.
+      #   CIIBestPracticesID      — aspirational badge program, no plans to
+      #                             apply for it.
+      #   MaintainedID            — transient false positive: repo is new
+      #                             (split out of monorepo April 2026); the
+      #                             heuristic clears at 90 days. Re-enable
+      #                             this entry as a test by removing it
+      #                             from the array after July 2026.
+      #
+      # Branch-Protection deliberately stays in: real signal that clears
+      # once the rule is enabled in Settings.
+      - name: Filter SARIF — drop checks that don't apply to this repo
+        run: |
+          jq '
+            .runs[].results |= map(select(
+              .ruleId as $r |
+              ["PinnedDependenciesID","CodeReviewID","FuzzingID",
+               "CIIBestPracticesID","MaintainedID"]
+              | index($r) | not
+            ))
+          ' results.sarif > filtered.sarif
+          mv filtered.sarif results.sarif
 
       # Keep a copy of the SARIF so it can be inspected from the Actions UI.
       - name: Upload SARIF as artifact

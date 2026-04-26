@@ -31,7 +31,13 @@ export function sizedCover(url: string | undefined, width: number): string | und
   if (!url) return undefined;
   try {
     const u = new URL(url);
-    if (!u.hostname.endsWith('marvelfe.com') && !u.hostname.endsWith('marvel.com')) return url;
+    // Anchor on apex + dot — CodeQL (js/incomplete-url-substring-sanitization)
+    // catches `endsWith('marvel.com')` matching `evilmarvel.com.attacker.example`.
+    const h = u.hostname;
+    const isMarvelHost =
+      h === 'marvel.com'   || h.endsWith('.marvel.com') ||
+      h === 'marvelfe.com' || h.endsWith('.marvelfe.com');
+    if (!isMarvelHost) return url;
     u.searchParams.set('w', String(width));
     return u.toString();
   } catch {
